@@ -140,6 +140,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/events" style={{ color: "var(--color-slate-400)", textDecoration: "none" }}>
+                  Events & School Outreach
+                </Link>
+              </li>
+              <li>
                 <Link href="/stem#lab-setup" style={{ color: "var(--color-slate-400)", textDecoration: "none" }}>
                   School STEM Lab Planning
                 </Link>
@@ -174,8 +179,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/events" style={{ color: "var(--color-slate-400)", textDecoration: "none" }}>
+                  Events & Workshops
+                </Link>
+              </li>
+              <li>
                 <Link href="/projects" style={{ color: "var(--color-slate-400)", textDecoration: "none" }}>
-                  Projects & Blueprints
+                  IoT Projects Portfolio
                 </Link>
               </li>
               <li>

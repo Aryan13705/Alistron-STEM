@@ -1,9 +1,16 @@
 import Link from "next/link";
-import { Cpu, GraduationCap, ArrowRight, CheckCircle, ShieldCheck, Activity, Layers } from "lucide-react";
+import { Cpu, GraduationCap, ArrowRight, CheckCircle, ShieldCheck, Activity, Layers, Sparkles } from "lucide-react";
 import ProjectGrid from "@/components/ProjectGrid";
 import JourneyTimeline from "@/components/JourneyTimeline";
+import EventCard from "@/components/EventCard";
+import { ALISTRON_EVENTS } from "@/data/events";
 
 export default function Home() {
+  const featuredEvents = [
+    ALISTRON_EVENTS.find((e) => e.slug === "ardubotics")!,
+    ALISTRON_EVENTS.find((e) => e.slug === "algo-2-arduino")!,
+    ALISTRON_EVENTS.find((e) => e.slug === "stem-training-kv")!,
+  ];
 
   return (
     <>
@@ -240,16 +247,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Showcase */}
+      {/* Featured IoT Projects Showcase */}
       <section className="section">
         <div className="container">
           <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem" }}>
             <span className="badge badge-parent" style={{ marginBottom: "0.75rem" }}>
-              Portfolio Directions
+              IoT & Telemetry Systems
             </span>
-            <h2 style={{ fontSize: "2.25rem" }}>Featured Projects & Blueprints</h2>
+            <h2 style={{ fontSize: "2.25rem" }}>Featured IoT Projects & Sensor Networks</h2>
             <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
-              Explore our current exploratory prototypes and educational lab blueprints.
+              Explore our connected hardware prototypes, long-range wireless telemetry, and smart environmental sensing nodes.
             </p>
           </div>
 
@@ -257,7 +264,59 @@ export default function Home() {
 
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <Link href="/projects" className="btn btn-outline btn-lg">
-              View Complete Project Library <ArrowRight size={16} />
+              View IoT Portfolio <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Events, Workshops & School Outreach */}
+      <section className="section section-alt">
+        <div className="container">
+          <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 3.5rem" }}>
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.35rem 0.85rem",
+                borderRadius: "var(--radius-full)",
+                fontSize: "0.775rem",
+                fontWeight: 700,
+                backgroundColor: "var(--stem-bg-subtle)",
+                color: "var(--stem-primary)",
+                border: "1px solid var(--stem-border)",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <GraduationCap size={14} /> Practical Training & Outreach
+            </span>
+            <h2 style={{ fontSize: "2.25rem", color: "var(--color-navy-900)" }}>
+              Events, Workshops & School Outreach
+            </h2>
+            <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem", fontSize: "1.05rem" }}>
+              Hands-on Arduino computing, multi-edition robotics learning, and practical STEM training programs delivered to school and collegiate students.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "2rem",
+              marginBottom: "3rem",
+            }}
+          >
+            {featuredEvents.map((event) => (
+              <EventCard key={event.id} event={event} featured={true} />
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <Link href="/events" className="btn btn-primary-navy btn-lg">
+              View All 5 Activities & Outreach Programs <ArrowRight size={16} />
             </Link>
           </div>
         </div>

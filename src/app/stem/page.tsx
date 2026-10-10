@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { GraduationCap, Wrench, Cpu, Users, ArrowRight, ShieldCheck, Sparkles, BookOpen, Layers } from "lucide-react";
 import { STEMWorkflowDiagram } from "@/components/Diagrams";
-import ProjectGrid from "@/components/ProjectGrid";
+import EventGrid from "@/components/EventGrid";
 
 export const metadata = {
   title: "Alistron STEM | School STEM Labs, Arduino & Robotics Training",
@@ -159,17 +159,26 @@ export default function STEMPage() {
         </div>
       </section>
 
-      {/* STEM Blueprints Showcase */}
+      {/* Events & Outreach Showcase */}
       <section className="section">
         <div className="container">
           <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem" }}>
-            <h2 style={{ fontSize: "2.25rem" }}>STEM Curriculum & Workshop Examples</h2>
+            <span className="badge badge-stem" style={{ marginBottom: "0.75rem" }}>
+              Hands-on Workshops & School Outreach
+            </span>
+            <h2 style={{ fontSize: "2.25rem" }}>Robotics Workshops & School Training</h2>
             <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
-              Practical hardware projects designed for middle and high school students.
+              Explore our structured learning programs including Ardubotics, Algo 2 Arduino, and Kendriya Vidyalaya outreach.
             </p>
           </div>
 
-          <ProjectGrid defaultFilter="stem" />
+          <EventGrid initialFilter="School Outreach" />
+
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <Link href="/events" className="btn btn-outline btn-lg">
+              View All Events & Workshops <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 

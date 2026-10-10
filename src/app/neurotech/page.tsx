@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Cpu, Activity, Zap, Layers, AlertCircle, ArrowRight, ShieldCheck, Brain, Radio } from "lucide-react";
 import { NeuroTechArchitectureDiagram } from "@/components/Diagrams";
-import ProjectGrid from "@/components/ProjectGrid";
 
 export const metadata = {
   title: "Alistron NeuroTech | Biosignal Research & Assistive Interfaces",
@@ -148,17 +147,60 @@ export default function NeuroTechPage() {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Research Prototyping Directions */}
       <section className="section">
         <div className="container">
           <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem" }}>
-            <h2 style={{ fontSize: "2.25rem" }}>NeuroTech Prototype Showcase</h2>
+            <span className="badge badge-neuro" style={{ marginBottom: "0.75rem" }}>
+              Exploratory R&D Pipeline
+            </span>
+            <h2 style={{ fontSize: "2.25rem" }}>NeuroTech Research Directions</h2>
             <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
-              Explore active research projects labeled accurately by development stage.
+              Explore active research areas labeled accurately as exploratory engineering blueprints.
             </p>
           </div>
 
-          <ProjectGrid defaultFilter="neurotech" />
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "2rem",
+            }}
+          >
+            <div className="card card-neuro" style={{ padding: "2rem" }}>
+              <div className="badge badge-neuro" style={{ marginBottom: "1rem" }}>
+                Active Research
+              </div>
+              <h3 style={{ fontSize: "1.3rem", color: "var(--color-navy-900)", marginBottom: "0.75rem" }}>
+                Non-Invasive Biosignal Decoding
+              </h3>
+              <p style={{ color: "var(--color-slate-700)", fontSize: "0.925rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
+                Investigating analog front-end amplification and bandpass filtering circuitry for surface electromyography (sEMG) and non-invasive electroencephalography (EEG).
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                <span className="badge">Instrumentation Amplifiers</span>
+                <span className="badge">Digital Signal Filtering</span>
+                <span className="badge">50Hz Notch Filter</span>
+              </div>
+            </div>
+
+            <div className="card card-neuro" style={{ padding: "2rem" }}>
+              <div className="badge badge-neuro" style={{ marginBottom: "1rem" }}>
+                Exploratory Concept
+              </div>
+              <h3 style={{ fontSize: "1.3rem", color: "var(--color-navy-900)", marginBottom: "0.75rem" }}>
+                Assistive Intent Haptics
+              </h3>
+              <p style={{ color: "var(--color-slate-700)", fontSize: "0.925rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
+                Developing vibrotactile actuator arrays and closed-loop pressure feedback mechanisms to explore sensory substitution for assistive devices.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                <span className="badge">ERM Actuators</span>
+                <span className="badge">Haptic Drivers</span>
+                <span className="badge">Sensory Substitution</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

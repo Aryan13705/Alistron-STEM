@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "NeuroTech", href: "/neurotech", division: "neuro" },
     { name: "STEM Education", href: "/stem", division: "stem" },
     { name: "Projects", href: "/projects" },
+    { name: "Events", href: "/events" },
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];

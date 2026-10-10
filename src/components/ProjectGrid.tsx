@@ -11,31 +11,23 @@ export type FilterCategory =
   | "Wireless IoT"
   | "Smart Agriculture"
   | "Water Management"
-  | "Environmental Monitoring"
   | "Wearable IoT"
-  | "Smart Infrastructure"
-  | "neurotech"
-  | "stem";
+  | "Smart Infrastructure";
 
 export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterCategory }) {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>(defaultFilter || "all");
 
   const categoriesList: { id: FilterCategory; label: string; icon?: React.ReactNode }[] = [
-    { id: "all", label: `All Projects (${PROJECTS_DATA.length})` },
+    { id: "all", label: `All IoT Projects (${PROJECTS_DATA.length})` },
     { id: "Wireless IoT", label: "Wireless IoT", icon: <Radio size={14} /> },
     { id: "Smart Agriculture", label: "Smart Agriculture" },
     { id: "Water Management", label: "Water Management" },
-    { id: "Environmental Monitoring", label: "Environmental Monitoring" },
     { id: "Wearable IoT", label: "Wearable IoT" },
     { id: "Smart Infrastructure", label: "Smart Infrastructure" },
-    { id: "neurotech", label: "NeuroTech Focus", icon: <Cpu size={14} /> },
-    { id: "stem", label: "STEM & Robotics", icon: <GraduationCap size={14} /> },
   ];
 
   const filteredProjects = PROJECTS_DATA.filter((project) => {
     if (activeFilter === "all") return true;
-    if (activeFilter === "neurotech") return project.division === "neurotech";
-    if (activeFilter === "stem") return project.division === "stem";
     return project.categoryTag === activeFilter;
   });
 

@@ -2,8 +2,8 @@ import Link from "next/link";
 import ProjectGrid from "@/components/ProjectGrid";
 
 export const metadata = {
-  title: "Projects & Blueprints | ALISTRON IoT, NeuroTech & STEM",
-  description: "Browse Alistron IoT projects, Wireless Environmental Telemetry, Smart Water Management, NeuroTech biosignal prototypes, and school STEM lab blueprints.",
+  title: "IoT Systems & Telemetry Portfolio | ALISTRON",
+  description: "Browse Alistron IoT projects, Wireless Environmental Telemetry, Smart Water Management, and Connected Infrastructure systems.",
 };
 
 export default function ProjectsPage() {
@@ -20,13 +20,13 @@ export default function ProjectsPage() {
         <div className="container">
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
             <span className="badge badge-parent" style={{ marginBottom: "1rem" }}>
-              Technical Portfolio
+              IoT & Hardware Portfolio
             </span>
             <h1 style={{ fontSize: "clamp(2.25rem, 4vw + 1rem, 3.5rem)", marginBottom: "1.25rem" }}>
-              Projects, IoT Systems & Blueprints
+              IoT Systems & Telemetry Blueprints
             </h1>
             <p style={{ fontSize: "1.15rem", color: "var(--color-slate-700)", lineHeight: 1.6 }}>
-              Explore our Wireless IoT systems, Smart Water Management, Environmental Wearables, NeuroTech biosignal research, and structured school STEM laboratory blueprints. All entries are explicitly labeled by category and implementation status.
+              Explore our connected hardware prototypes, long-range wireless telemetry nodes, smart water distribution monitors, and environmental wearable systems. For robotics workshops and school outreach, visit our dedicated <Link href="/events" style={{ color: "var(--stem-primary)", fontWeight: 600, textDecoration: "underline" }}>Events & Workshops</Link> section.
             </p>
           </div>
         </div>
