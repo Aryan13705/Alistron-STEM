@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ALISTRON_EVENTS, AlistronEvent } from "@/data/events";
 import {
@@ -251,24 +252,59 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 </div>
               </div>
 
-              {/* Photographic Documentation Notice */}
-              <div
-                style={{
-                  padding: "1rem 1.25rem",
-                  borderRadius: "var(--radius-md)",
-                  backgroundColor: "var(--color-slate-50)",
-                  border: "1px solid var(--color-slate-200)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                }}
-              >
-                <CameraOff size={18} color="var(--color-slate-400)" style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: "0.85rem", color: "var(--color-slate-600)" }}>
-                  <strong>Event Photography: </strong>
-                  Original high-resolution session photographs will be added as institutional archival records are finalized and verified for publication.
-                </span>
-              </div>
+              {/* Photographic Documentation */}
+              {event.hasOriginalPhoto && event.image ? (
+                <div
+                  style={{
+                    borderRadius: "var(--radius-lg)",
+                    overflow: "hidden",
+                    border: "1px solid var(--color-slate-200)",
+                    marginBottom: "1.25rem",
+                  }}
+                >
+                  <div style={{ position: "relative", width: "100%", height: "360px", backgroundColor: "var(--color-slate-900)" }}>
+                    <Image
+                      src={event.image}
+                      alt={event.name}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 880px) 100vw, 880px"
+                    />
+                  </div>
+                  <div
+                    style={{
+                      padding: "0.75rem 1rem",
+                      backgroundColor: "var(--color-slate-50)",
+                      fontSize: "0.85rem",
+                      color: "var(--color-slate-700)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <Sparkles size={16} color="var(--stem-primary)" />
+                    <span><strong>Original Archival Photograph: </strong>Auditorium session with participating students.</span>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  style={{
+                    padding: "1rem 1.25rem",
+                    borderRadius: "var(--radius-md)",
+                    backgroundColor: "var(--color-slate-50)",
+                    border: "1px solid var(--color-slate-200)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <CameraOff size={18} color="var(--color-slate-400)" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: "0.85rem", color: "var(--color-slate-600)" }}>
+                    <strong>Event Photography: </strong>
+                    Original high-resolution session photographs will be added as institutional archival records are finalized and verified for publication.
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Curriculum and Topics */}

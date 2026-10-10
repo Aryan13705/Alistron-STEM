@@ -161,7 +161,8 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Hands-on demonstration of hardware engineering concepts",
       "Encouraging curiosity in electronics and robotics"
     ],
-    hasOriginalPhoto: false,
+    hasOriginalPhoto: true,
+    image: "/images/events/stem-training-kv.jpg",
     verificationNotice: "Specific Kendriya Vidyalaya branch name, dates, participant details, and exact syllabus topics are pending formal institutional confirmation. Alistron does not claim institutional endorsement."
   }
 ];

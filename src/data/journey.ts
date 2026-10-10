@@ -62,7 +62,8 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Structuring hands-on STEM curriculum frameworks for students"
     ],
     image: "/images/journey/stem-workshop.jpg",
-    imageCaption: "Illustrative Concept Image",
+    imageCaption: "Original School STEM Training Session",
+    isOriginalPhoto: true,
     badge: "STEM Expansion"
   },
   {

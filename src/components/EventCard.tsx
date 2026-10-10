@@ -130,6 +130,29 @@ export default function EventCard({ event, featured = false }: EventCardProps) {
         </span>
       </div>
 
+      {/* Optional Verified Event Photograph */}
+      {event.hasOriginalPhoto && event.image && (
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "180px",
+            borderRadius: "var(--radius-md)",
+            overflow: "hidden",
+            marginBottom: "1.15rem",
+            backgroundColor: "var(--color-slate-900)",
+          }}
+        >
+          <Image
+            src={event.image}
+            alt={event.name}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 400px"
+          />
+        </div>
+      )}
+
       {/* Activity Title */}
       <h3
         style={{
