@@ -204,7 +204,10 @@ export default function JourneyTimeline() {
                           borderRadius: "var(--radius-sm)",
                         }}
                       >
-                        <span>🎨 {m.imageCaption || "Illustrative Concept Image"}</span>
+                        <span>
+                          {m.isOriginalPhoto ? "📸 " : "🎨 "}
+                          {m.imageCaption || (m.isOriginalPhoto ? "Original Archival Photograph" : "Illustrative Concept Image")}
+                        </span>
                         <span style={{ fontSize: "0.75rem", opacity: 0.85 }}>Click to enlarge</span>
                       </div>
                     </div>

@@ -8,6 +8,7 @@ export interface JourneyMilestone {
   highlights: string[];
   image: string;
   imageCaption?: string;
+  isOriginalPhoto?: boolean;
   badge: string;
 }
 
@@ -26,7 +27,8 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Grew a student community dedicated to practical hardware innovation"
     ],
     image: "/images/journey/club-founding.jpg",
-    imageCaption: "Illustrative Concept Image",
+    imageCaption: "Original Student Tech & Robotics Club Team",
+    isOriginalPhoto: true,
     badge: "Student Club Era"
   },
   {
