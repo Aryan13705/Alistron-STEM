@@ -7,7 +7,7 @@ import { CheckCircle2, ChevronRight, Maximize2, Sparkles, Briefcase, Users, Micr
 
 export default function JourneyTimeline() {
   const [activeTab, setActiveTab] = useState<string>("all");
-  const [modalImage, setModalImage] = useState<{ src: string; title: string } | null>(null);
+  const [modalImage, setModalImage] = useState<{ src: string; title: string; caption?: string } | null>(null);
 
   const iconsMap: Record<string, React.ReactNode> = {
     "college-club": <Users className="w-5 h-5" />,
@@ -145,14 +145,14 @@ export default function JourneyTimeline() {
                         height: "260px",
                         borderRadius: "calc(var(--radius-md) - 4px)",
                         overflow: "hidden",
-                        backgroundColor: "var(--color-slate-900)",
+                        backgroundColor: m.id === "first-prototype" ? "#D9D9D9" : "var(--color-slate-900)",
                       }}
                     >
                       <Image
                         src={m.image}
                         alt={m.title}
                         fill
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: m.id === "first-prototype" ? "contain" : "cover" }}
                         sizes="(max-width: 768px) 100vw, 500px"
                         priority={index === 0}
                       />
@@ -160,11 +160,17 @@ export default function JourneyTimeline() {
                         style={{
                           position: "absolute",
                           inset: 0,
-                          background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%)",
+                          background: m.id === "first-prototype" ? "none" : "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%)",
                         }}
                       />
                       <button
-                        onClick={() => setModalImage({ src: m.image, title: m.title })}
+                        onClick={() =>
+                          setModalImage({
+                            src: m.image,
+                            title: m.title,
+                            caption: m.imageCaption || (m.isOriginalPhoto ? "Original Archival Image" : "Illustrative Concept Image"),
+                          })
+                        }
                         style={{
                           position: "absolute",
                           top: "12px",
@@ -339,7 +345,9 @@ export default function JourneyTimeline() {
             >
               <div>
                 <h4 style={{ color: "var(--color-white)", fontSize: "1.1rem" }}>{modalImage.title}</h4>
-                <p style={{ color: "var(--color-slate-400)", fontSize: "0.8rem", margin: 0 }}>Illustrative Concept Image</p>
+                <p style={{ color: "var(--color-slate-400)", fontSize: "0.8rem", margin: 0 }}>
+                  {modalImage.caption || "Archival Milestone Record"}
+                </p>
               </div>
               <button
                 onClick={() => setModalImage(null)}

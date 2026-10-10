@@ -44,8 +44,9 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "3D-printed multi-articulated bionic hand mechanics",
       "Presented research prototypes at collegiate technology expos"
     ],
-    image: "/images/journey/early-prototype.jpg",
-    imageCaption: "Illustrative Concept Image",
+    image: "/images/journey/early-prototype.png",
+    imageCaption: "Original Bionic Arm Prototype Emblem",
+    isOriginalPhoto: true,
     badge: "NeuroTech Genesis"
   },
   {
