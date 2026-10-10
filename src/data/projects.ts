@@ -255,122 +255,180 @@ export const PROJECTS_DATA: Project[] = [
     isSoftwareOnly: false
   },
   {
-    id: "eeg-signal-pipeline",
-    title: "Real-Time Biosignal Analysis Pipeline",
-    division: "neurotech",
-    category: "EEG Signal Processing",
-    categoryTag: "EEG Signal Processing",
-    status: "Prototype",
-    description: "An open-source Python & C++ signal processing pipeline for real-time filtering, bandpower calculation, and artifact removal from multi-channel EEG streams.",
-    overview: "An exploratory software processing framework built to ingest, filter, and extract spectral features from multi-channel electroencephalography signals in real time.",
-    problemStatement: "Raw EEG signal streams suffer from heavy muscle activity artifacts and mains line noise, necessitating low-latency filtering prior to feature extraction.",
+    id: "line-follower-robot",
+    title: "Autonomous Line Follower Robot",
+    division: "stem",
+    category: "Robotics & Hardware",
+    categoryTag: "Robotics & Hardware",
+    status: "Completed",
+    description: "An autonomous two-wheel differential drive mobile robot using calibrated infrared reflectance sensors and closed-loop motor control to track high-contrast line paths.",
+    overview: "A precision autonomous mobile robot engineered to follow continuous black lines on white surfaces (or vice versa). Equipped with an array of infrared reflectance sensors, an Arduino microcontroller, and an L298N dual H-bridge motor driver, the system executes real-time path tracking through calibrated sensor thresholds and smooth differential motor speed control.",
+    problemStatement: "Robotics learners struggle to understand analog sensor physics, comparator threshold calibration, and real-time closed-loop motor actuation when working only with simulated code.",
     objectives: [
-      "Provide real-time digital filtering with <15ms processing latency.",
-      "Extract relative alpha, beta, and theta bandpower features.",
-      "Isolate ocular and electromyographic noise artifacts."
+      "Deploy a multi-channel infrared reflectance sensor array for surface line detection.",
+      "Implement closed-loop differential drive algorithms for smooth trajectory correction.",
+      "Construct a modular 2WD chassis with independent PWM speed regulation for sharp turns and curves."
     ],
     hardwareAndSensors: [
-      "Multi-channel bio-potential ADC frontend (ADS1299 series)",
-      "Dry / gel EEG electrode array"
+      "Arduino UNO / Nano microcontroller board",
+      "TCRT5000 multi-channel infrared reflectance sensor array",
+      "L298N / TB6612FNG dual DC motor driver module",
+      "Twin 6V geared DC motors with high-traction rubber wheels",
+      "Front omnidirectional caster ball wheel",
+      "7.4V Li-ion rechargeable battery pack with power toggle switch"
     ],
-    communicationArchitecture: "LSL (Lab Streaming Layer) / WebSockets binary data stream.",
+    communicationArchitecture: "USB Serial programming interface & real-time sensor threshold telemetry.",
     softwareAndDataProcessing: [
-      "IIR Notch & Butterworth bandpass filters",
-      "Fast Fourier Transform (FFT) bandpower calculator",
-      "Python MNE biosignal library"
+      "Embedded C++ firmware on Arduino IDE",
+      "Digital & analog sensor threshold normalization",
+      "Differential drive error correction steering algorithm",
+      "PWM timer modulation for linear motor acceleration"
     ],
     implementationWorkflow: [
-      "Synthetic EEG signal generator validation",
-      "Filter latency benchmarking",
-      "Live stream GUI integration"
+      "Chassis assembly & mechanical alignment",
+      "Sensor height tuning (5mm - 10mm ground clearance)",
+      "Driver pin mapping and motor polarity testing",
+      "Track testing with curved tracks, sharp 90-degree bends, and intersections"
     ],
-    testingAndResults: "Achieved sub-15ms processing latency across 8-channel 250Hz sample streams in laboratory simulation.",
-    techStack: ["Python", "C++", "DSP Filters", "MNE-Python", "WebSockets"],
+    testingAndResults: "Successfully tested across complex arena tracks with 90-degree corners and tight S-curves, achieving continuous track following at up to 0.45 m/s without track loss.",
+    image: "/images/projects/line-follower.jpg",
+    techStack: ["Arduino", "IR Sensor Array", "L298N Motor Driver", "Embedded C++", "PWM Control"],
     keyHighlights: [
-      "Low-latency notch and bandpass filtering (<15ms)",
-      "Automated blink and muscle artifact separation algorithm",
-      "Modular architecture for exploratory EEG hardware"
+      "Multi-channel IR reflectance sensor array for high-contrast track detection",
+      "Dual H-Bridge differential steering with dynamic PWM modulation",
+      "Modular physical chassis designed for hands-on student robotics workshops"
+    ]
+  },
+  {
+    id: "bluetooth-car",
+    title: "Smartphone Controlled Bluetooth Robot Car",
+    division: "stem",
+    category: "Robotics & Hardware",
+    categoryTag: "Robotics & Hardware",
+    status: "Completed",
+    description: "A wireless mobile robotic vehicle controlled via Android smartphone app over serial Bluetooth RF, featuring responsive directional steering and speed tuning.",
+    overview: "A wireless mobile robot platform interfaced with an HC-05/HC-06 Bluetooth module and an Arduino microcontroller. The car receives single-character and packetized command strings over UART from a mobile app, translating touch gestures, button inputs, or accelerometer tilt into precise forward, reverse, steering, and braking maneuvers.",
+    problemStatement: "Students frequently find wireless RF protocols intimidating and lack hands-on experience linking mobile interfaces to physical embedded motor actuators.",
+    objectives: [
+      "Establish bidirectional serial communication over 2.4 GHz Bluetooth RF link.",
+      "Design responsive smartphone control interface with low latency (<50ms).",
+      "Implement fail-safe auto-brake routines upon Bluetooth connection loss."
     ],
-    disclaimer: "Exploratory research prototype. Not intended or tested for medical diagnosis or clinical monitoring."
+    hardwareAndSensors: [
+      "Arduino UNO microcontroller board",
+      "HC-05 / HC-06 Bluetooth Serial Transceiver module",
+      "L298N dual H-bridge motor driver",
+      "4x DC geared motors with 4WD chassis assembly",
+      "Status indicator LEDs & buzzer for pairing state feedback",
+      "Rechargeable 18650 Li-ion battery pack (7.4V - 8.4V)"
+    ],
+    communicationArchitecture: "UART Serial (9600 baud, 8-N-1) over Bluetooth SPP (Serial Port Profile).",
+    softwareAndDataProcessing: [
+      "Arduino C++ UART buffer parsing",
+      "State-machine drive command handler (Fwd, Rev, Left, Right, Stop)",
+      "PWM speed level adjustment protocol",
+      "Connection watchdog timer for emergency stop"
+    ],
+    implementationWorkflow: [
+      "HC-05 module pairing & baud rate configuration",
+      "Motor driver wiring & logic table verification",
+      "Mobile app button and tilt steering mapping",
+      "Range and response latency obstacle course driving tests"
+    ],
+    testingAndResults: "Tested reliable wireless command responsiveness up to 12 meters line-of-sight with latency below 40ms and immediate auto-stop upon connection timeout.",
+    image: "/images/projects/bluetooth-car.jpg",
+    techStack: ["Arduino UNO", "HC-05 Bluetooth", "UART Serial", "Android App Control", "Motor Drivers"],
+    keyHighlights: [
+      "Low-latency UART serial command decoding over Bluetooth link",
+      "Full directional drive control with variable PWM speed switching",
+      "Auto-stop safety watchdog preventing runaway when out of RF range"
+    ]
+  },
+  {
+    id: "obstacle-avoiding-robot",
+    title: "Autonomous Ultrasonic Obstacle Avoiding Robot",
+    division: "stem",
+    category: "Robotics & Hardware",
+    categoryTag: "Robotics & Hardware",
+    status: "Completed",
+    description: "An intelligent autonomous rover equipped with an ultrasonic distance sensor and micro servo scanner to detect obstacles in real time and navigate around collisions.",
+    overview: "An intelligent mobile robot designed to roam independently without human intervention. Featuring an ultrasonic distance sensor mounted on an SG90 micro servo, the rover continuously scans its forward hemisphere. When an obstacle is detected within a predefined safety perimeter (e.g., 20cm), the rover halts, pans left and right to evaluate clearance distances, and autonomously turns toward the clearest path.",
+    problemStatement: "Building truly autonomous machines requires students to integrate sensor measurement physics with decision-making state machines and spatial navigation logic.",
+    objectives: [
+      "Measure high-accuracy distance telemetry using time-of-flight ultrasonic echolocation.",
+      "Mount ultrasonic sensor on panning servo to evaluate 180-degree spatial clearance.",
+      "Implement reactive collision-avoidance state machine to navigate unstructured spaces."
+    ],
+    hardwareAndSensors: [
+      "Arduino UNO / Nano microcontroller board",
+      "HC-SR04 Ultrasonic distance sensor (2cm - 400cm range)",
+      "SG90 9g micro servo motor for directional sensor panning",
+      "L298N / TB6612 motor driver module",
+      "Robotic rover chassis with DC gear motors",
+      "7.4V rechargeable battery pack & regulated 5V power supply"
+    ],
+    communicationArchitecture: "Trigger/Echo ultrasonic pulse timing (10µs trigger pulse duration).",
+    softwareAndDataProcessing: [
+      "Arduino C++ pulseIn() distance calculation with temperature compensation",
+      "Obstacle scanning state machine (LookAhead, Halt, ScanLeft, ScanRight, Pivot)",
+      "Differential reverse-and-turn maneuver sequence",
+      "Digital noise smoothing filter for distance readings"
+    ],
+    implementationWorkflow: [
+      "Chassis build and servo-ultrasonic turret mounting",
+      "Ultrasonic pulse calibration and minimum safety distance tuning",
+      "Collision avoidance algorithm testing in boxed maze environments",
+      "Performance optimization for fast turning and dead-end recovery"
+    ],
+    testingAndResults: "Demonstrated 100% collision prevention across test mazes, successfully navigating narrow passages and dead ends with dynamic left/right clearance evaluation.",
+    image: "/images/projects/obstacle-avoider.jpg",
+    techStack: ["Arduino", "HC-SR04 Ultrasonic", "SG90 Servo", "Autonomous Navigation", "C++"],
+    keyHighlights: [
+      "180-degree servo panning turret for dynamic spatial path evaluation",
+      "Microsecond ultrasonic echolocation with anti-stuck dead-end recovery",
+      "Completely autonomous navigation requiring zero external operator input"
+    ]
   },
   {
     id: "emg-prosthetic-control",
-    title: "Multi-Channel EMG Intent Classifier",
+    title: "Surface EMG Bionic Hand & Gesture Interface",
     division: "neurotech",
     category: "Neuroprosthetics & Assistive Tech",
     categoryTag: "Neuroprosthetics & Assistive Tech",
     status: "Prototype",
-    description: "A machine learning interface that decodes surface electromyography (sEMG) signals into discrete hand gesture commands for robotic prosthetics.",
-    overview: "A gesture classification pipeline capturing surface muscle potentials from forearm muscles to control multi-articulated prosthetic actuators.",
-    problemStatement: "Traditional threshold-based muscle switches offer limited degrees of freedom for upper-limb amputees.",
+    description: "A non-invasive biosignal interface capturing surface electromyography (sEMG) signals to control an articulated 3D-printed prosthetic hand prototype.",
+    overview: "An exploratory gesture classification pipeline capturing surface muscle potentials from forearm muscles to control multi-articulated prosthetic actuators, originating from Alistron's founding collegiate neuro-engineering research.",
+    problemStatement: "Traditional threshold-based muscle switches offer limited degrees of freedom for upper-limb assistive devices.",
     objectives: [
-      "Classify 5 distinct hand gesture intents from 4 sEMG sensor channels.",
-      "Run inference on low-power embedded microcontrollers.",
-      "Provide real-time visual telemetry."
+      "Detect surface muscle activation from differential sEMG sensor channels.",
+      "Translate activation envelopes to discrete prosthetic grip commands.",
+      "Provide real-time visual telemetry on an embedded microcontroller."
     ],
     hardwareAndSensors: [
-      "4-channel differential sEMG analog sensors",
-      "STM32 / ARM Cortex-M microcontrollers",
-      "3D-printed robotic prosthetic hand with servo actuators"
+      "Differential surface EMG analog sensor electrodes",
+      "Arduino / ARM Cortex-M microcontroller",
+      "3D-printed multi-articulated bionic hand mechanics",
+      "Micro servo motors with tendon wire actuation"
     ],
-    communicationArchitecture: "SPI/UART serial bus between sensor ADC and motor controller.",
+    communicationArchitecture: "Analog sensor ADC acquisition & PWM servo signaling.",
     softwareAndDataProcessing: [
-      "Time-domain feature extraction (MAV, RMS, Waveform Length)",
-      "Lightweight Neural Network classifier in PyTorch/C++",
+      "Analog signal envelope detection & baseline threshold filtering",
+      "Multi-state gesture command mapping (Open, Fist, Pinch, Point)",
       "PWM servo actuation driver"
     ],
     implementationWorkflow: [
-      "sEMG dataset collection across 10 trial subjects",
-      "Model training & quantizing for MCU",
-      "Bench testing with prosthetic hand"
+      "sEMG sensor skin placement and contact impedance calibration",
+      "Muscle contraction threshold characterization",
+      "Bench testing with 3D-printed prosthetic mechanism"
     ],
-    testingAndResults: "Achieved 91.5% offline gesture classification accuracy across 5 grip patterns on laboratory test bench.",
-    techStack: ["PyTorch", "sEMG Sensors", "Embedded C++", "STM32 Microcontrollers"],
+    testingAndResults: "Demonstrated reliable real-time grip trigger actuation from surface forearm contractions on laboratory test bench.",
+    techStack: ["Arduino", "sEMG Sensors", "3D Printing", "Embedded C++", "Servo Actuation"],
     keyHighlights: [
-      "Pattern recognition classifier for 5 distinct grip gestures",
-      "On-device lightweight neural network inference model",
-      "Interactive telemetry visualizer for forearm muscle activation"
+      "Non-invasive surface electromyography signal acquisition",
+      "3D-printed articulated hand with tendon-wire servo actuation",
+      "Foundational research prototype driving Alistron NeuroTech exploration"
     ],
-    disclaimer: "Non-clinical engineering prototype developed for human-machine interaction testing."
-  },
-  {
-    id: "bci-speller-concept",
-    title: "Visual Evoked Potential (VEP) Assistive Speller",
-    division: "neurotech",
-    category: "Brain-Computer Interface",
-    categoryTag: "Brain-Computer Interface",
-    status: "Concept",
-    description: "A high-frequency steady-state visual evoked potential (SSVEP) paradigm design for hands-free text entry and communication.",
-    overview: "A research paradigm concept utilizing flickering visual targets on a screen to evoke distinct occipital EEG frequencies for hands-free selection.",
-    problemStatement: "Individuals with severe motor impairment require reliable hands-free communication channels that do not depend on physical movement.",
-    objectives: [
-      "Design dual-frequency visual flicker grid.",
-      "Implement Canonical Correlation Analysis (CCA) for frequency detection.",
-      "Create accessible keyboard layout."
-    ],
-    hardwareAndSensors: [
-      "Occipital electrode array (O1, O2, Oz channels)",
-      "120Hz high-refresh monitor"
-    ],
-    communicationArchitecture: "Local GPU monitor rendering + LSL signal stream.",
-    softwareAndDataProcessing: [
-      "Canonical Correlation Analysis (CCA) algorithm",
-      "OpenCV target rendering engine",
-      "Python signal visualizer"
-    ],
-    implementationWorkflow: [
-      "Visual stimulus frequency design",
-      "Simulation algorithm testing",
-      "UI ergonomics design"
-    ],
-    testingAndResults: "Algorithmic research concept tested via simulated SSVEP frequency streams.",
-    techStack: ["Python", "OpenCV", "Signal FFT Analysis", "UI Ergonomics"],
-    keyHighlights: [
-      "Dual-frequency flickering visual target grid layout",
-      "Canonical correlation analysis (CCA) frequency recognition core",
-      "Designed for accessible hands-free typing interfaces"
-    ],
-    disclaimer: "Algorithmic research concept under active laboratory simulation."
+    disclaimer: "Non-clinical engineering prototype developed for exploratory human-machine interaction testing."
   },
   {
     id: "school-stem-lab-v1",
