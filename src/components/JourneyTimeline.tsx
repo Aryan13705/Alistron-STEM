@@ -278,27 +278,7 @@ export default function JourneyTimeline() {
           </div>
         </div>
 
-        {/* Note for User's Own Photo Uploads */}
-        <div
-          style={{
-            marginTop: "4rem",
-            maxWidth: "780px",
-            marginInline: "auto",
-            padding: "1.5rem",
-            borderRadius: "var(--radius-lg)",
-            backgroundColor: "var(--color-navy-900)",
-            color: "var(--color-white)",
-            textAlign: "center",
-            boxShadow: "var(--shadow-xl)",
-          }}
-        >
-          <h4 style={{ color: "var(--color-white)", fontSize: "1.25rem", marginBottom: "0.5rem" }}>
-            Add & Swap Genuine Project Photography
-          </h4>
-          <p style={{ color: "var(--color-slate-300)", fontSize: "0.925rem", lineHeight: 1.6, marginBottom: "0" }}>
-            Genuine project and workshop photographs can be placed in <code>public/images/journey/</code> replacing <code>club-founding.jpg</code>, <code>early-prototype.jpg</code>, <code>stem-workshop.jpg</code>, or <code>venture-concept.jpg</code>. They will automatically render across this timeline.
-          </p>
-        </div>
+
       </div>
 
       {/* Lightbox Photo Modal */}
