@@ -26,7 +26,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Participated in collegiate hackathons & technical symposiums",
       "Grew a student community dedicated to practical hardware innovation"
     ],
-    image: "/images/journey/club-founding.jpg",
+    image: "/images/journey/alistron-team-photo.jpg",
     imageCaption: "Original Student Tech & Robotics Club Team",
     isOriginalPhoto: true,
     badge: "Student Club Era"
@@ -44,7 +44,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "3D-printed multi-articulated bionic hand mechanics",
       "Presented research prototypes at collegiate technology expos"
     ],
-    image: "/images/journey/early-prototype.png",
+    image: "/images/journey/bionic-arm-emblem.png",
     imageCaption: "Original Bionic Arm Prototype Emblem",
     isOriginalPhoto: true,
     badge: "NeuroTech Genesis"
@@ -62,7 +62,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Developing modular Arduino & sensor learning kits",
       "Structuring hands-on STEM curriculum frameworks for students"
     ],
-    image: "/images/journey/stem-workshop.jpg",
+    image: "/images/journey/kv-stem-auditorium.jpg",
     imageCaption: "Original School STEM Training Session",
     isOriginalPhoto: true,
     badge: "STEM Expansion"
