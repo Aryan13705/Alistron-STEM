@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cloudflare": "next build && cd out && zip -rq ../cloudflare-pages-deploy.zip .",
     "start": "next start",
     "lint": "eslint"
   },
