@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { JOURNEY_MILESTONES, JourneyMilestone } from "@/data/journey";
-import { CheckCircle2, ChevronRight, Maximize2, Sparkles, Briefcase, Users, Microchip, GraduationCap, X } from "lucide-react";
+import { JOURNEY_MILESTONES } from "@/data/journey";
+import { CheckCircle2, Maximize2, Sparkles, Briefcase, Users, Microchip, GraduationCap, X } from "lucide-react";
 
 export default function JourneyTimeline() {
   const [activeTab, setActiveTab] = useState<string>("all");

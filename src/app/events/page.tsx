@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Calendar, GraduationCap, ShieldCheck, ArrowRight, HelpCircle, Info } from "lucide-react";
+import { GraduationCap, ArrowRight, Info } from "lucide-react";
 import EventGrid from "@/components/EventGrid";
 
 export const metadata = {
@@ -64,7 +64,7 @@ export default function EventsPage() {
                 marginBottom: "1.75rem",
               }}
             >
-              Discover Alistron's hands-on Arduino workshops, iterative robotics learning editions, and practical STEM training initiatives delivered to school and collegiate learners.
+              Discover Alistron&apos;s hands-on Arduino workshops, iterative robotics learning editions, and practical STEM training initiatives delivered to school and collegiate learners.
             </p>
 
             {/* Factual Disclaimer Banner */}

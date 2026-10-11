@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PROJECTS_DATA, Project } from "@/data/projects";
-import { Cpu, GraduationCap, Radio, ArrowRight, AlertCircle, Sparkles } from "lucide-react";
+import { PROJECTS_DATA } from "@/data/projects";
+import { Cpu, GraduationCap, Radio, ArrowRight, AlertCircle } from "lucide-react";
 
 export type FilterCategory =
   | "all"

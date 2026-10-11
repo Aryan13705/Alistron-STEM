@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ALISTRON_EVENTS, AlistronEvent } from "@/data/events";
+import { ALISTRON_EVENTS } from "@/data/events";
 import {
   ArrowLeft,
   Calendar,
@@ -12,10 +12,8 @@ import {
   Cpu,
   Sparkles,
   Info,
-  ShieldCheck,
   CameraOff,
   Users,
-  Layers,
   ArrowRight,
 } from "lucide-react";
 

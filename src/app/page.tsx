@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Cpu, GraduationCap, ArrowRight, CheckCircle, ShieldCheck, Activity, Layers, Sparkles } from "lucide-react";
+import { Cpu, GraduationCap, ArrowRight, CheckCircle, ShieldCheck, Activity, Layers } from "lucide-react";
 import ProjectGrid from "@/components/ProjectGrid";
 import JourneyTimeline from "@/components/JourneyTimeline";
 import EventCard from "@/components/EventCard";

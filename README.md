@@ -20,6 +20,33 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Deploy to Cloudflare Pages (drag and drop)
+
+The site is configured as a Next.js static export (`output: "export"`), so it can be
+deployed to Cloudflare Pages by dragging a folder. The contact form keeps working on
+Cloudflare through a Pages Function in advanced mode (`public/_worker.js`).
+
+1. Build the static site:
+
+   ```bash
+   npm install
+   npm run build
+   ```
+
+   This produces the deployable `out/` folder (or run `npm run build:cloudflare` to
+   also generate `cloudflare-pages-deploy.zip`).
+
+2. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages →
+   Upload assets**, then drag either the `out/` folder or `cloudflare-pages-deploy.zip`.
+
+3. (Optional) In the Pages project under **Settings → Environment variables**, add
+   these to enable real email delivery for the contact form. Without a key the form
+   still succeeds and logs enquiries server-side:
+
+   - `RESEND_API_KEY` – Resend API key
+   - `RESEND_FROM_EMAIL` – verified sender (defaults to `onboarding@resend.dev`)
+   - `RESEND_TO_EMAIL` – recipient inbox (defaults to `alistronllp@gmail.com`)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -29,8 +56,9 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy to other static hosts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Because the build is a plain static export, the `out/` folder also works on GitHub
+Pages, Netlify, S3, or any static file server. On hosts without Cloudflare Pages
+Functions, the contact form's `/api/contact` endpoint will be unavailable.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
