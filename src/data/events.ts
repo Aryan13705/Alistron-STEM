@@ -162,7 +162,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Encouraging curiosity in electronics and robotics"
     ],
     hasOriginalPhoto: true,
-    image: "/images/events/kv-stem-auditorium.jpg",
+    image: "/images/events/kv-stem-auditorium.webp",
     verificationNotice: "Specific Kendriya Vidyalaya branch name, dates, participant details, and exact syllabus topics are pending formal institutional confirmation. Alistron does not claim institutional endorsement."
   }
 ];

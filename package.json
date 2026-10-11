@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:cloudflare": "next build && cd out && zip -rq ../cloudflare-pages-deploy.zip .",
+    "optimize:images": "node scripts/optimize-images.mjs",
     "start": "next start",
     "lint": "eslint"
   },
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "sharp": "^0.35.5",
     "typescript": "^5"
   }
 }
