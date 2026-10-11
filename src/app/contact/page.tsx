@@ -59,11 +59,11 @@ export default function ContactPage() {
                     <div>
                       <h4 style={{ fontSize: "1rem", marginBottom: "0.25rem" }}>Email Channels</h4>
                       <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-                        <a href="mailto:alistronllp@gmail.com" style={{ color: "var(--neuro-primary)", fontWeight: 600, textDecoration: "none" }}>
-                          alistronllp@gmail.com
-                        </a>
-                        <a href="mailto:contact@alistron.in" style={{ color: "var(--color-slate-700)", fontWeight: 500, textDecoration: "none", fontSize: "0.95rem" }}>
+                        <a href="mailto:contact@alistron.in" style={{ color: "var(--neuro-primary)", fontWeight: 600, textDecoration: "none" }}>
                           contact@alistron.in
+                        </a>
+                        <a href="mailto:alistronllp@gmail.com" style={{ color: "var(--color-slate-700)", fontWeight: 500, textDecoration: "none", fontSize: "0.95rem" }}>
+                          alistronllp@gmail.com
                         </a>
                       </div>
                     </div>

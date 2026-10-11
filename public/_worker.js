@@ -8,7 +8,7 @@
 // (Settings -> Environment variables) for production and preview:
 //   RESEND_API_KEY   - Resend API key (optional; falls back to log-only mode)
 //   RESEND_FROM_EMAIL - verified sender, defaults to onboarding@resend.dev
-//   RESEND_TO_EMAIL   - recipient inbox, defaults to alistronllp@gmail.com
+//   RESEND_TO_EMAIL   - recipient inbox, defaults to contact@alistron.in
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -56,7 +56,7 @@ async function handleContact(request, env) {
 
   const resendApiKey = env.RESEND_API_KEY;
   const resendFromEmail = env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
-  const resendToEmail = env.RESEND_TO_EMAIL || "alistronllp@gmail.com";
+  const resendToEmail = env.RESEND_TO_EMAIL || "contact@alistron.in";
   const category = typeof enquiryType === "string" && enquiryType ? enquiryType : "general";
 
   // 3. Optional Resend email delivery

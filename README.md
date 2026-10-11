@@ -45,7 +45,7 @@ Cloudflare through a Pages Function in advanced mode (`public/_worker.js`).
 
    - `RESEND_API_KEY` – Resend API key
    - `RESEND_FROM_EMAIL` – verified sender (defaults to `onboarding@resend.dev`)
-   - `RESEND_TO_EMAIL` – recipient inbox (defaults to `alistronllp@gmail.com`)
+   - `RESEND_TO_EMAIL` – recipient inbox (defaults to `contact@alistron.in`)
 
 ## Learn More
 
