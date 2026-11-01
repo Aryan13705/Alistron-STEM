@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:cloudflare": "next build && cd out && zip -rq ../cloudflare-pages-deploy.zip .",
+    "build:heliohost": "node scripts/package-deploy.mjs heliohost",
+    "build:github": "node scripts/package-deploy.mjs github",
+    "build:cloudflare": "node scripts/package-deploy.mjs cloudflare",
     "optimize:images": "node scripts/optimize-images.mjs",
     "start": "next start",
     "lint": "eslint"
@@ -14,8 +16,7 @@
     "lucide-react": "^1.55.0",
     "next": "16.4.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "resend": "^6.32.1"
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
