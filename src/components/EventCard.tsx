@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import {
   Calendar,
   MapPin,
@@ -140,7 +141,7 @@ export default function EventCard({ event, featured = false }: EventCardProps) {
           }}
         >
           <Image
-            src={event.image}
+            src={withBasePath(event.image)}
             alt={event.name}
             fill
             style={{ objectFit: "cover" }}

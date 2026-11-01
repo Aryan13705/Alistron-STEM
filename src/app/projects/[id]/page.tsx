@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
 import { PROJECTS_DATA } from "@/data/projects";
 import {
@@ -177,7 +178,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                     }}
                   >
                     <Image
-                      src={project.image}
+                      src={withBasePath(project.image)}
                       alt={project.title}
                       fill
                       style={{ objectFit: "cover" }}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { Cpu, GraduationCap, ArrowRight, Check, ShieldCheck, Activity, Layers } from "lucide-react";
 import ProjectGrid from "@/components/ProjectGrid";
 import JourneyTimeline from "@/components/JourneyTimeline";
@@ -45,7 +46,7 @@ export default function Home() {
 
           <div className="hero-visual">
             <Image
-              src="/images/brand/emblem.webp"
+              src={withBasePath("/images/brand/emblem.webp")}
               alt="Alistron emblem: the Alistron A with a robotic prosthetic hand and orbit ring"
               width={580}
               height={410}

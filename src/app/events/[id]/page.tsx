@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
 import { ALISTRON_EVENTS } from "@/data/events";
 import {
@@ -265,7 +266,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                   }}
                 >
                   <Image
-                    src={event.image}
+                    src={withBasePath(event.image)}
                     alt={event.name}
                     fill
                     style={{ objectFit: "cover" }}

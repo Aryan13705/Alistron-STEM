@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Send, Check, AlertCircle, Loader2, GraduationCap, Cpu, HelpCircle } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
+
+// Static hosts without a backend (GitHub Pages) post to the HelioHost endpoint instead.
+const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || withBasePath("/api/contact");
 
 export default function ContactForm({ initialType }: { initialType?: "school" | "neurotech" | "general" }) {
   const searchParams = useSearchParams();
@@ -43,7 +47,7 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { JOURNEY_MILESTONES } from "@/data/journey";
 import { Check, Maximize2, Briefcase, Users, Microchip, GraduationCap, X } from "lucide-react";
 
@@ -149,7 +150,7 @@ export default function JourneyTimeline() {
                       }}
                     >
                       <Image
-                        src={m.image}
+                        src={withBasePath(m.image)}
                         alt={m.title}
                         fill
                         style={{ objectFit: m.id === "first-prototype" ? "contain" : "cover" }}
@@ -280,7 +281,7 @@ export default function JourneyTimeline() {
             }}
           >
             <div style={{ position: "relative", width: "100%", height: "500px" }}>
-              <Image src={modalImage.src} alt={modalImage.title} fill style={{ objectFit: "contain" }} />
+              <Image src={withBasePath(modalImage.src)} alt={modalImage.title} fill style={{ objectFit: "contain" }} />
             </div>
             <div
               style={{

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { PROJECTS_DATA } from "@/data/projects";
 import { Cpu, GraduationCap, Radio, ArrowRight, AlertCircle } from "lucide-react";
 
@@ -120,7 +121,7 @@ export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterC
                     }}
                   >
                     <Image
-                      src={project.image}
+                      src={withBasePath(project.image)}
                       alt={project.title}
                       fill
                       style={{ objectFit: "cover" }}

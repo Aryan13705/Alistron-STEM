@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { TEAM_MEMBERS, TEAM_TIERS } from "@/data/team";
 import { Lightbulb, Users, TrendingUp, Cpu, Wrench } from "lucide-react";
 
@@ -79,7 +80,7 @@ export default function TeamSection() {
                     }}
                   >
                     <Image
-                      src={member.image}
+                      src={withBasePath(member.image)}
                       alt={member.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 240px"

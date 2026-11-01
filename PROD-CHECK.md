@@ -12,10 +12,12 @@ Status: `DONE` fixed · `TODO` open · `BLOCKED` waiting on assets/specs
   Project cards alone drop from ~4 MB to ~0.7 MB.
 - [x] **DONE — No cache headers.** Production returned
   `cache-control: public, max-age=0, must-revalidate` for everything. Added
-  `public/_headers` (immutable for `/_next/static/*`, 30-day cache for
-  `/images/*` and `*.svg`) — applies on Cloudflare Pages.
-- [x] **DONE [P3]** Unused photos (~5 MB) moved from `public/images` to
-  `assets/unused-photos/`: kept in the repo, no longer deployed.
+  cache rules (immutable for `/_next/static/*`, 30-day cache for images and icons,
+  revalidate for HTML): `.htaccess` on HelioHost, `_headers` on Cloudflare Pages.
+- [x] **DONE [P3]** Unused photos (~5 MB) removed from `public/images`, and later
+  deleted from the repo (`assets/unused-photos/`, recoverable from git history).
+- [x] **DONE** Removed the unused `resend` npm package (both contact endpoints call
+  the Resend REST API directly).
 - [x] **DONE** Removed the leftover Next.js starter SVGs (`next.svg`,
   `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) from `public/`.
 
@@ -48,14 +50,16 @@ Status: `DONE` fixed · `TODO` open · `BLOCKED` waiting on assets/specs
 - [x] **DONE [P1]** Form used to report success when `RESEND_API_KEY` was missing or
   delivery failed (enquiry only logged). It now returns an error asking visitors to
   email contact@alistron.in.
-- [ ] **TODO [P1] — Set `RESEND_API_KEY` and `RESEND_FROM_EMAIL`** in Cloudflare
-  Pages (see README). Sender domain must be verified in Resend.
+- [ ] **TODO [P1] — Set `RESEND_API_KEY` and `RESEND_FROM_EMAIL`** in
+  `alistron-config.php` above `httpdocs/` on HelioHost (see README). Sender domain must
+  be verified in Resend.
 
 ## SEO / security
 
 - [x] **DONE** Sitemap covers events and all project/event detail pages; branded 404.
 - [x] **DONE** Security headers (`nosniff`, `X-Frame-Options`, `Referrer-Policy`,
-  `Permissions-Policy`, HSTS) in `public/_headers`.
+  `Permissions-Policy`, HSTS) in `deploy/heliohost/webroot/.htaccess` and
+  `deploy/cloudflare/webroot/_headers`.
 
 ## Code quality
 
@@ -65,6 +69,16 @@ Status: `DONE` fixed · `TODO` open · `BLOCKED` waiting on assets/specs
   `no-explicit-any`). `npm run lint` is clean.
 
 ## Deployment
+
+- [x] **DONE — HelioHost (Plesk).** `npm run build:heliohost` produces
+  `heliohost-deploy.zip`: static export + `.htaccess` (trailing-slash URLs, branded 404,
+  caching, gzip, security headers, www → apex) + `api/contact.php` (PHP port of the
+  Cloudflare worker, Resend via cURL). Tested against Apache 2.4 locally.
+- [x] **DONE — GitHub Pages (browser upload).** `npm run build:github` produces
+  `github-pages-deploy/` with `.nojekyll`; `BASE_PATH=/<repo>` supports project sites.
+  The contact form posts cross-origin to the HelioHost endpoint.
+- [ ] **TODO** Enable HTTPS on HelioHost for `alistron.in` + `www.alistron.in`
+  (Let's Encrypt + redirect, see README). The GitHub Pages contact form depends on it.
 
 - [x] **DONE — Cloudflare Pages drag-and-drop.** Static export (`out/`) plus
   `_worker.js` / `_routes.json` keep the contact form working. `npm run build:cloudflare`

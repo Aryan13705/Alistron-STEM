@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "public/**",
+    // Host-specific files copied into out/ at package time.
+    "deploy/**",
     "next-env.d.ts",
   ]),
 ]);
