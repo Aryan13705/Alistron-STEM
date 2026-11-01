@@ -70,7 +70,7 @@ export const PROJECTS_DATA: Project[] = [
       "Outdoor line-of-sight range verification test"
     ],
     testingAndResults: "Bench testing completed; line-of-sight signal telemetry packets successfully received up to field boundary limits. Continuous year-round outdoor deployment testing details to be added.",
-    image: "/images/projects/long-range-sensing.jpg",
+    image: "/images/projects/long-range-sensing.webp",
     githubUrl: "https://github.com/alistron",
     demoUrl: "",
     techStack: ["Sub-GHz RF", "Embedded C++", "SHT31", "BMP280", "Python", "Solar PMIC"],
@@ -113,7 +113,7 @@ export const PROJECTS_DATA: Project[] = [
       "Closed-loop control loop programming and field container trial"
     ],
     testingAndResults: "Bench-tested with potted soil containers; system reliably opened the solenoid valve when soil moisture dropped below 30% threshold and shut off upon reaching 65% moisture saturation.",
-    image: "/images/projects/smart-irrigation.jpg",
+    image: "/images/projects/smart-irrigation.webp",
     githubUrl: "https://github.com/alistron",
     demoUrl: "",
     techStack: ["Microcontroller", "Capacitive Moisture Sensor", "Solenoid Valve", "Embedded C++", "Relay Driver"],
@@ -155,7 +155,7 @@ export const PROJECTS_DATA: Project[] = [
       "Pilot test rig construction (planned)"
     ],
     testingAndResults: "System architecture and flow differential logic modeled in simulation. Physical test rig validation details to be added.",
-    image: "/images/projects/water-leakage.jpg",
+    image: "/images/projects/water-leakage.webp",
     githubUrl: "https://github.com/alistron",
     demoUrl: "",
     techStack: ["Flow Sensors", "Pressure Transducers", "LoRaWAN", "Time-Series Analytics", "Python"],
@@ -199,7 +199,7 @@ export const PROJECTS_DATA: Project[] = [
       "BLE smartphone data sync development"
     ],
     testingAndResults: "Enclosure and sensor response verified against indoor particulate variations. Long-term user trial data details to be added.",
-    image: "/images/projects/asthma-guardian.jpg",
+    image: "/images/projects/asthma-guardian.webp",
     githubUrl: "https://github.com/alistron",
     demoUrl: "",
     techStack: ["BLE 5.0", "PM2.5 Sensor", "VOC Sensor", "Embedded C++", "Haptic Motor", "Mobile App"],
@@ -243,7 +243,7 @@ export const PROJECTS_DATA: Project[] = [
       "Ultrasonic water level node bench testing"
     ],
     testingAndResults: "Hydrodynamic elevation flow model validated against historical municipal rain data. Field node installation details to be added.",
-    image: "/images/projects/urban-flood.jpg",
+    image: "/images/projects/urban-flood.webp",
     githubUrl: "https://github.com/alistron",
     demoUrl: "",
     techStack: ["Python GIS", "GeoPandas", "Ultrasonic Node", "MQTT", "WebGL Map", "Docker"],

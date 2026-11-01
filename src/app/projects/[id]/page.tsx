@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { PROJECTS_DATA, Project } from "@/data/projects";
+import { PROJECTS_DATA } from "@/data/projects";
 import {
   ArrowLeft,
   Cpu,
@@ -16,7 +16,6 @@ import {
   Wrench,
   Activity,
   FileCode,
-  Share2,
 } from "lucide-react";
 
 interface ProjectPageProps {

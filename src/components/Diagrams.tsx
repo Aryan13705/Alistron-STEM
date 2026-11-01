@@ -1,4 +1,3 @@
-"use me";
 "use client";
 
 import { Activity, Cpu, Zap, Layers, FileSearch, CheckCircle2, GraduationCap, Wrench, Users } from "lucide-react";

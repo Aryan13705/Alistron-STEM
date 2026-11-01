@@ -26,7 +26,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Participated in collegiate hackathons & technical symposiums",
       "Grew a student community dedicated to practical hardware innovation"
     ],
-    image: "/images/journey/alistron-team-photo.jpg",
+    image: "/images/journey/alistron-team-photo.webp",
     imageCaption: "Original Student Tech & Robotics Club Team",
     isOriginalPhoto: true,
     badge: "Student Club Era"
@@ -44,7 +44,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "3D-printed multi-articulated bionic hand mechanics",
       "Presented research prototypes at collegiate technology expos"
     ],
-    image: "/images/journey/bionic-arm-emblem.png",
+    image: "/images/journey/bionic-arm-emblem.webp",
     imageCaption: "Original Bionic Arm Prototype Emblem",
     isOriginalPhoto: true,
     badge: "NeuroTech Genesis"
@@ -62,7 +62,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Developing modular Arduino & sensor learning kits",
       "Structuring hands-on STEM curriculum frameworks for students"
     ],
-    image: "/images/journey/kv-stem-auditorium.jpg",
+    image: "/images/journey/kv-stem-auditorium.webp",
     imageCaption: "Original School STEM Training Session",
     isOriginalPhoto: true,
     badge: "STEM Expansion"
@@ -80,7 +80,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       "Two focused divisions: Alistron NeuroTech and Alistron STEM.",
       "Developing educational programs, engineering projects, and institutional collaborations."
     ],
-    image: "/images/journey/venture-concept.jpg",
+    image: "/images/journey/venture-concept.webp",
     imageCaption: "Illustrative Concept Image",
     badge: "MSME / UDYAM REGISTERED"
   }

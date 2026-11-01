@@ -15,7 +15,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Founder",
     roleBadge: "Founder",
     description: "Vision, Research and Product Development",
-    image: "/images/team/aryan-jaiswal.png",
+    image: "/images/team/aryan-jaiswal.webp",
     iconType: "vision"
   },
   {
@@ -24,7 +24,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Co-Founder",
     roleBadge: "Co-Founder",
     description: "Strategy, Growth and Operations",
-    image: "/images/team/lal-awnish-nath-shadeo.png",
+    image: "/images/team/lal-awnish-nath-shadeo.webp",
     iconType: "strategy"
   },
   {
@@ -33,7 +33,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Co-Founder",
     roleBadge: "Co-Founder",
     description: "Product Development and Technical Planning",
-    image: "/images/team/gaurang-jadoun.png",
+    image: "/images/team/gaurang-jadoun.webp",
     iconType: "product"
   },
   {
@@ -42,7 +42,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Technical Member",
     roleBadge: "Technical Member",
     description: "Embedded Systems and IoT Development",
-    image: "/images/team/kaushlesh-sharma.png",
+    image: "/images/team/kaushlesh-sharma.webp",
     iconType: "embedded"
   },
   {
@@ -51,7 +51,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Technical Member",
     roleBadge: "Technical Member",
     description: "Hardware Design and Prototyping",
-    image: "/images/team/divyansh-lahoni.png",
+    image: "/images/team/divyansh-lahoni.webp",
     iconType: "hardware"
   }
 ];

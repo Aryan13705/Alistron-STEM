@@ -67,8 +67,8 @@ export default function Footer() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "0.25rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--color-slate-300)" }}>
                 <Mail size={16} color="var(--neuro-bright)" />
-                <a href="mailto:alistronllp@gmail.com" style={{ color: "var(--color-slate-300)", textDecoration: "none" }}>
-                  alistronllp@gmail.com
+                <a href="mailto:contact@alistron.in" style={{ color: "var(--color-slate-300)", textDecoration: "none" }}>
+                  contact@alistron.in
                 </a>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--color-slate-300)" }}>

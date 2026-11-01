@@ -15,7 +15,6 @@ import {
   Cpu,
   CheckCircle2,
   CameraOff,
-  ExternalLink,
 } from "lucide-react";
 import { AlistronEvent } from "@/data/events";
 

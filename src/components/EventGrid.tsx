@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ALISTRON_EVENTS, AlistronEvent } from "@/data/events";
+import { ALISTRON_EVENTS } from "@/data/events";
 import EventCard from "@/components/EventCard";
 import { Sparkles, Calendar, GraduationCap, Cpu, Layers } from "lucide-react";
 
@@ -50,7 +50,7 @@ export default function EventGrid({
 
   const filteredEvents = ALISTRON_EVENTS.filter((event) => {
     if (activeFilter === "All Events") return true;
-    return event.categories.includes(activeFilter as any);
+    return event.categories.includes(activeFilter);
   });
 
   const displayedEvents = maxItems ? filteredEvents.slice(0, maxItems) : filteredEvents;

@@ -20,6 +20,12 @@
 # production
 /build
 
+# cloudflare pages deploy artifact
+/cloudflare-pages-deploy.zip
+
+# wrangler local state
+/.wrangler/
+
 # misc
 .DS_Store
 *.pem
