@@ -8,15 +8,17 @@ export interface AlistronEvent {
   shortDescription: string;
   fullDescription: string;
   topicsCovered: string[];
-  date: string;
+  /** Shown only when known. */
+  date?: string;
   venue: string;
   status: "Completed Edition" | "Flagship Program" | "School Outreach" | "Upcoming / Scheduled";
   targetAudience: string;
   highlights: string[];
   hasOriginalPhoto: boolean;
   image?: string;
-  verificationNotice: string;
 }
+
+const SRMIST = "SRM Institute of Science and Technology (SRMIST)";
 
 export const ALISTRON_EVENTS: AlistronEvent[] = [
   {
@@ -36,8 +38,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "DC motor drivers and motor actuation principles",
       "Basic obstacle and edge detection concepts"
     ],
-    date: "Date on record (exact schedule to be confirmed)",
-    venue: "Venue & institution details to be confirmed",
+    venue: SRMIST,
     status: "Flagship Program",
     targetAudience: "Students & robotics beginners",
     highlights: [
@@ -45,8 +46,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Introduction to physical computing logic",
       "Modular hardware kit experimentation"
     ],
-    hasOriginalPhoto: false,
-    verificationNotice: "Specific session dates, batch schedules, and institutional venue records are subject to archival confirmation."
+    hasOriginalPhoto: false
   },
   {
     id: "algo-2-arduino",
@@ -65,8 +65,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Handling real-time sensor inputs and thresholds",
       "Debugging logic routines with Serial Monitor"
     ],
-    date: "Date on record (exact schedule to be confirmed)",
-    venue: "Venue & institution details to be confirmed",
+    venue: SRMIST,
     status: "Completed Edition",
     targetAudience: "High school & collegiate students exploring coding & hardware",
     highlights: [
@@ -74,8 +73,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "State machine programming exercises",
       "Logic optimization for microcontrollers"
     ],
-    hasOriginalPhoto: false,
-    verificationNotice: "Session records, participant documentation, and exact hosting dates are currently undergoing verification."
+    hasOriginalPhoto: false
   },
   {
     id: "ardubotics-2-0",
@@ -94,8 +92,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Refined line-following and boundary detection routines",
       "Hardware troubleshooting and circuit debugging"
     ],
-    date: "Date on record (subsequent edition)",
-    venue: "Venue & institution details to be confirmed",
+    venue: SRMIST,
     status: "Completed Edition",
     targetAudience: "Intermediate students & robotics hobbyists",
     highlights: [
@@ -103,8 +100,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Differential drive PWM motor control",
       "Iterative chassis and circuit refinement"
     ],
-    hasOriginalPhoto: false,
-    verificationNotice: "Edition logs and verified historical session archives are currently being documented."
+    hasOriginalPhoto: false
   },
   {
     id: "ardubotics-3-0",
@@ -123,8 +119,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Fail-safe emergency stop and watchdog routines",
       "Collaborative robotics challenge execution"
     ],
-    date: "Date on record (further edition)",
-    venue: "Venue & institution details to be confirmed",
+    venue: SRMIST,
     status: "Completed Edition",
     targetAudience: "Advanced student teams & robotics enthusiasts",
     highlights: [
@@ -132,8 +127,7 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Autonomous spatial obstacle avoidance",
       "System integration and challenge testing"
     ],
-    hasOriginalPhoto: false,
-    verificationNotice: "Event records, photo archives, and institutional venue details are awaiting confirmation."
+    hasOriginalPhoto: false
   },
   {
     id: "stem-training-kv",
@@ -142,18 +136,16 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
     activityType: "School Outreach STEM Program",
     category: "School Outreach",
     categories: ["School Outreach", "Workshops"],
-    shortDescription: "Training delivered to school students, with exact topics and institution details to be confirmed.",
+    shortDescription: "Hands-on STEM training for Kendriya Vidyalaya students, hosted at SRMIST.",
     fullDescription:
-      "STEM Training for Kendriya Vidyalaya Students represents training delivered to school students, with exact topics and institution details to be confirmed. The outreach aims to encourage practical science, electronics, and technology awareness among young learners.",
+      "STEM Training for Kendriya Vidyalaya Students is a hands-on outreach programme delivered by Alistron at SRM Institute of Science and Technology (SRMIST). The training encourages practical science, electronics, and technology awareness among young learners.",
     topicsCovered: [
       "Foundational electronics and physical computing concepts",
       "Interactive hardware demonstrations with microcontrollers",
       "Introduction to robotics and real-world engineering thinking",
-      "Practical science experimentation activities",
-      "Exact syllabus modules to be confirmed with school administration"
+      "Practical science experimentation activities"
     ],
-    date: "Date to be confirmed",
-    venue: "Kendriya Vidyalaya (Specific school branch to be confirmed)",
+    venue: SRMIST,
     status: "School Outreach",
     targetAudience: "School students (Kendriya Vidyalaya)",
     highlights: [
@@ -162,7 +154,6 @@ export const ALISTRON_EVENTS: AlistronEvent[] = [
       "Encouraging curiosity in electronics and robotics"
     ],
     hasOriginalPhoto: true,
-    image: "/images/events/kv-stem-auditorium.jpg",
-    verificationNotice: "Specific Kendriya Vidyalaya branch name, dates, participant details, and exact syllabus topics are pending formal institutional confirmation. Alistron does not claim institutional endorsement."
+    image: "/images/events/kv-stem-auditorium.webp"
   }
 ];

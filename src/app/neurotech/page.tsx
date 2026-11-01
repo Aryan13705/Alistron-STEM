@@ -3,7 +3,7 @@ import { Cpu, Activity, Zap, Layers, AlertCircle, ArrowRight, ShieldCheck, Brain
 import { NeuroTechArchitectureDiagram } from "@/components/Diagrams";
 
 export const metadata = {
-  title: "Alistron NeuroTech | Biosignal Research & Assistive Interfaces",
+  title: "Alistron Bionics | Biosignal Research & Assistive Interfaces",
   description: "Exploring brain-computer interfaces (BCI), surface EMG decoding, EEG signal processing, and haptic feedback for non-invasive assistive technology.",
 };
 
@@ -13,7 +13,7 @@ export default function NeuroTechPage() {
       {/* Division Hero Header */}
       <section
         style={{
-          background: "linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%)",
+          background: "var(--color-slate-50)",
           paddingTop: "5rem",
           paddingBottom: "4.5rem",
           borderBottom: "1px solid var(--neuro-border)",
@@ -25,7 +25,7 @@ export default function NeuroTechPage() {
               <Cpu size={14} /> Division A • Frontier Research
             </span>
             <h1 style={{ fontSize: "clamp(2.25rem, 4vw + 1rem, 3.5rem)", marginBottom: "1.25rem" }}>
-              Alistron NeuroTech
+              Alistron Bionics
             </h1>
             <p style={{ fontSize: "1.2rem", color: "var(--color-slate-700)", lineHeight: 1.6, marginBottom: "1.75rem" }}>
               Investigating non-invasive biosignal processing, neural intent classification, electromyography (EMG), and haptic human-machine interfaces.
@@ -35,7 +35,7 @@ export default function NeuroTechPage() {
             <div className="disclaimer-box">
               <AlertCircle size={20} />
               <p>
-                <strong>Responsible Research Safeguard:</strong> Alistron NeuroTech activities represent exploratory engineering research, software algorithms, and hardware prototypes. We do not claim clinical validation, medical diagnosis efficacy, or regulatory approval.
+                <strong>Responsible Research Safeguard:</strong> Alistron Bionics activities represent exploratory engineering research, software algorithms, and hardware prototypes. We do not claim clinical validation, medical diagnosis efficacy, or regulatory approval.
               </p>
             </div>
 
@@ -72,7 +72,7 @@ export default function NeuroTechPage() {
             }}
           >
             {/* Pillar 1 */}
-            <div className="card card-neuro">
+            <div id="bci-research" className="card card-neuro">
               <Brain size={32} color="var(--neuro-primary)" style={{ marginBottom: "1rem" }} />
               <h3 style={{ fontSize: "1.35rem", marginBottom: "0.75rem", color: "var(--color-navy-900)" }}>
                 Brain-Computer Interfaces (BCI)
@@ -105,7 +105,7 @@ export default function NeuroTechPage() {
             </div>
 
             {/* Pillar 4 */}
-            <div className="card card-neuro">
+            <div id="neuroprosthetics" className="card card-neuro">
               <Zap size={32} color="var(--neuro-primary)" style={{ marginBottom: "1rem" }} />
               <h3 style={{ fontSize: "1.35rem", marginBottom: "0.75rem", color: "var(--color-navy-900)" }}>
                 Neuroprosthetics & Haptic Feedback
@@ -127,7 +127,7 @@ export default function NeuroTechPage() {
             </div>
 
             {/* Pillar 6 */}
-            <div className="card card-neuro">
+            <div id="responsible-dev" className="card card-neuro">
               <ShieldCheck size={32} color="var(--neuro-primary)" style={{ marginBottom: "1rem" }} />
               <h3 style={{ fontSize: "1.35rem", marginBottom: "0.75rem", color: "var(--color-navy-900)" }}>
                 Ethical Neuro-Technology
@@ -154,7 +154,7 @@ export default function NeuroTechPage() {
             <span className="badge badge-neuro" style={{ marginBottom: "0.75rem" }}>
               Exploratory R&D Pipeline
             </span>
-            <h2 style={{ fontSize: "2.25rem" }}>NeuroTech Research Directions</h2>
+            <h2 style={{ fontSize: "2.25rem" }}>Bionics Research Directions</h2>
             <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
               Explore active research areas labeled accurately as exploratory engineering blueprints.
             </p>
@@ -208,7 +208,7 @@ export default function NeuroTechPage() {
       <section className="section section-dark">
         <div className="container" style={{ textAlign: "center", maxWidth: "760px" }}>
           <h2 style={{ color: "var(--color-white)", fontSize: "2.25rem", marginBottom: "1rem" }}>
-            Interested in NeuroTech Collaboration?
+            Interested in collaborating on bionics?
           </h2>
           <p style={{ color: "var(--color-slate-300)", fontSize: "1.05rem", marginBottom: "2rem" }}>
             We collaborate with academic researchers, biomechatronics engineers, and open-source hardware contributors.

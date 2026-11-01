@@ -1,13 +1,12 @@
-"use me";
 "use client";
 
-import { Activity, Cpu, Zap, Layers, FileSearch, CheckCircle2, GraduationCap, Wrench, Users } from "lucide-react";
+import { Activity, Cpu, Zap, Layers, FileSearch, Check, GraduationCap, Wrench, Users } from "lucide-react";
 
 export function NeuroTechArchitectureDiagram() {
   return (
     <div
       style={{
-        background: "linear-gradient(135deg, #070C1B 0%, #0B132B 100%)",
+        background: "var(--color-navy-950)",
         borderRadius: "var(--radius-xl)",
         padding: "2.5rem 2rem",
         color: "var(--color-white)",
@@ -40,7 +39,7 @@ export function NeuroTechArchitectureDiagram() {
         <div
           style={{
             backgroundColor: "rgba(15, 23, 42, 0.8)",
-            border: "1px solid rgba(14, 165, 233, 0.3)",
+            border: "1px solid rgba(76, 148, 240, 0.3)",
             borderRadius: "var(--radius-lg)",
             padding: "1.5rem",
             display: "flex",
@@ -65,7 +64,7 @@ export function NeuroTechArchitectureDiagram() {
         <div
           style={{
             backgroundColor: "rgba(15, 23, 42, 0.8)",
-            border: "1px solid rgba(14, 165, 233, 0.3)",
+            border: "1px solid rgba(76, 148, 240, 0.3)",
             borderRadius: "var(--radius-lg)",
             padding: "1.5rem",
             display: "flex",
@@ -89,7 +88,7 @@ export function NeuroTechArchitectureDiagram() {
         <div
           style={{
             backgroundColor: "rgba(15, 23, 42, 0.8)",
-            border: "1px solid rgba(14, 165, 233, 0.3)",
+            border: "1px solid rgba(76, 148, 240, 0.3)",
             borderRadius: "var(--radius-lg)",
             padding: "1.5rem",
             display: "flex",
@@ -113,7 +112,7 @@ export function NeuroTechArchitectureDiagram() {
         <div
           style={{
             backgroundColor: "rgba(15, 23, 42, 0.8)",
-            border: "1px solid rgba(14, 165, 233, 0.3)",
+            border: "1px solid rgba(76, 148, 240, 0.3)",
             borderRadius: "var(--radius-lg)",
             padding: "1.5rem",
             display: "flex",
@@ -161,7 +160,7 @@ export function STEMWorkflowDiagram() {
       num: "04",
       title: "School Approval",
       desc: "Formal agreement and institutional sign-off prior to hardware procurement.",
-      icon: CheckCircle2,
+      icon: Check,
     },
     {
       num: "05",
@@ -224,7 +223,7 @@ export function STEMWorkflowDiagram() {
                 <span
                   style={{
                     fontSize: "0.85rem",
-                    fontWeight: 800,
+                    fontWeight: 650,
                     color: "var(--stem-primary)",
                     backgroundColor: "var(--stem-bg-subtle)",
                     padding: "0.25rem 0.625rem",

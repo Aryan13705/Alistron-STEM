@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Cpu, GraduationCap, ArrowRight, CheckCircle, ShieldCheck, Activity, Layers, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
+import { Cpu, GraduationCap, ArrowRight, Check, ShieldCheck, Activity, Layers } from "lucide-react";
 import ProjectGrid from "@/components/ProjectGrid";
 import JourneyTimeline from "@/components/JourneyTimeline";
 import EventCard from "@/components/EventCard";
@@ -15,84 +17,56 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        style={{
-          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
-          paddingTop: "5.5rem",
-          paddingBottom: "5rem",
-          borderBottom: "1px solid var(--color-slate-200)",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div style={{ maxWidth: "840px", margin: "0 auto", textAlign: "center" }}>
-            <div className="badge badge-parent" style={{ marginBottom: "1.25rem" }}>
-              MSME / Udyam Registered Venture
-            </div>
+      <section className="hero">
+        <div className="container hero-inner">
+          <div className="hero-copy">
+            <span className="hero-eyebrow">Engineering Human Potential</span>
 
-            <h1
-              style={{
-                fontSize: "clamp(2.5rem, 5vw + 1rem, 4rem)",
-                fontWeight: 800,
-                color: "var(--color-navy-900)",
-                lineHeight: 1.15,
-                letterSpacing: "-0.03em",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Engineering a Smarter Future.
-            </h1>
+            <h1 className="hero-title">Engineering a Smarter Future.</h1>
 
-            <p
-              style={{
-                fontSize: "clamp(1.1rem, 1.5vw + 0.8rem, 1.35rem)",
-                color: "var(--color-slate-700)",
-                lineHeight: 1.6,
-                marginBottom: "2.5rem",
-                fontWeight: 400,
-              }}
-            >
+            <p className="hero-lede">
               Bringing together emerging assistive technology and practical STEM education to turn engineering ideas into meaningful real-world possibilities.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <a href="#divisions" className="btn btn-primary-navy btn-lg">
-                Explore Our Divisions <ArrowRight size={18} />
+            <div className="hero-actions">
+              <a href="#divisions" className="btn btn-brand btn-lg">
+                Explore our divisions <ArrowRight size={18} />
               </a>
-              <Link href="/contact" className="btn btn-outline btn-lg">
-                Start a Conversation
+              <Link href="/contact" className="btn btn-ghost-light btn-lg">
+                Talk to us
               </Link>
             </div>
+
+            <ul className="hero-meta">
+              <li>MSME / Udyam registered</li>
+              <li>Bionics research</li>
+              <li>STEM labs for schools</li>
+            </ul>
+          </div>
+
+          <div className="hero-visual">
+            <Image
+              src={withBasePath("/images/brand/emblem.webp")}
+              alt="Alistron emblem: the Alistron A with a robotic prosthetic hand and orbit ring"
+              width={580}
+              height={410}
+              preload
+            />
           </div>
         </div>
       </section>
 
       {/* Two Divisions Section */}
-      <section id="divisions" className="section" style={{ backgroundColor: "var(--color-slate-50)" }}>
+      <section id="divisions" className="section">
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3.5rem" }}>
-            <span
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                color: "var(--color-slate-500)",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-              }}
-            >
-              Two Focused Divisions • One Parent Mission
-            </span>
-            <h2 style={{ fontSize: "2.25rem", marginTop: "0.5rem" }}>
-              Tailored Engineering & Educational Focus
-            </h2>
+          <div className="section-head">
+            <div className="section-head-text">
+              <span className="badge">What we do</span>
+              <h2>Two divisions, one engineering mission</h2>
+              <p>
+                Alistron Bionics builds assistive technology. Alistron STEM brings hands-on engineering into schools.
+              </p>
+            </div>
           </div>
 
           <div
@@ -102,7 +76,7 @@ export default function Home() {
               gap: "2rem",
             }}
           >
-            {/* Division Card A: NeuroTech */}
+            {/* Division Card A: Bionics */}
             <div className="card card-neuro card-interactive" style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
                 <div
@@ -122,7 +96,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="badge badge-neuro">Division A</span>
-                  <h3 style={{ fontSize: "1.5rem", color: "var(--color-navy-900)" }}>Alistron NeuroTech</h3>
+                  <h3 style={{ fontSize: "1.5rem", color: "var(--color-navy-900)" }}>Alistron Bionics</h3>
                 </div>
               </div>
 
@@ -138,15 +112,15 @@ export default function Home() {
                   "Tactile Haptic Feedback Systems",
                 ].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem", color: "var(--color-slate-700)" }}>
-                    <CheckCircle size={16} color="var(--neuro-primary)" />
+                    <Check size={16} color="var(--neuro-primary)" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
               <div style={{ paddingTop: "1.25rem", borderTop: "1px solid var(--color-slate-200)" }}>
-                <Link href="/neurotech" className="btn btn-neuro" style={{ width: "100%" }}>
-                  Explore NeuroTech Division <ArrowRight size={16} />
+                <Link href="/neurotech" className="btn btn-outline">
+                  Explore Bionics <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
@@ -187,15 +161,15 @@ export default function Home() {
                   "Teacher Empowerment & Ongoing Maintenance",
                 ].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem", color: "var(--color-slate-700)" }}>
-                    <CheckCircle size={16} color="var(--stem-primary)" />
+                    <Check size={16} color="var(--stem-primary)" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
               <div style={{ paddingTop: "1.25rem", borderTop: "1px solid var(--color-slate-200)" }}>
-                <Link href="/stem" className="btn btn-stem" style={{ width: "100%" }}>
-                  Explore STEM Division <ArrowRight size={16} />
+                <Link href="/stem" className="btn btn-outline">
+                  Explore STEM <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
@@ -206,11 +180,12 @@ export default function Home() {
       {/* Our Operating Principles */}
       <section className="section section-alt">
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3.5rem" }}>
-            <h2 style={{ fontSize: "2.25rem" }}>Working Principles & Safeguards</h2>
-            <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
-              Built on transparency, practical engineering, and ethical research standards.
-            </p>
+          <div className="section-head">
+            <div className="section-head-text">
+              <span className="badge">How we work</span>
+              <h2>Practical engineering, stated honestly</h2>
+              <p>Transparency, hands-on rigour and clear approvals guide every project and every school we work with.</p>
+            </div>
           </div>
 
           <div
@@ -224,7 +199,7 @@ export default function Home() {
               <ShieldCheck size={28} color="var(--neuro-primary)" style={{ marginBottom: "1rem" }} />
               <h4 style={{ marginBottom: "0.5rem" }}>Responsible Research Framing</h4>
               <p style={{ fontSize: "0.9rem", color: "var(--color-slate-600)" }}>
-                NeuroTech exploration is presented transparently as experimental engineering and non-clinical research. We make no unverified medical or commercial efficacy claims.
+                Bionics exploration is presented transparently as experimental engineering and non-clinical research. We make no unverified medical or commercial efficacy claims.
               </p>
             </div>
 
@@ -250,63 +225,42 @@ export default function Home() {
       {/* Featured IoT Projects Showcase */}
       <section className="section">
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem" }}>
-            <span className="badge badge-parent" style={{ marginBottom: "0.75rem" }}>
-              IoT & Telemetry Systems
-            </span>
-            <h2 style={{ fontSize: "2.25rem" }}>Featured IoT Projects & Sensor Networks</h2>
-            <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem" }}>
-              Explore our connected hardware prototypes, long-range wireless telemetry, and smart environmental sensing nodes.
-            </p>
+          <div className="section-head">
+            <div className="section-head-text">
+              <span className="badge">Projects</span>
+              <h2>Connected hardware we&apos;ve built</h2>
+              <p>Long-range wireless telemetry, smart sensing nodes and IoT prototypes from our engineering team.</p>
+            </div>
+            <Link href="/projects" className="section-head-link">
+              All projects <ArrowRight size={16} />
+            </Link>
           </div>
 
           <ProjectGrid defaultFilter="all" />
 
-          <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <Link href="/projects" className="btn btn-outline btn-lg">
-              View IoT Portfolio <ArrowRight size={16} />
-            </Link>
-          </div>
+
         </div>
       </section>
 
       {/* Featured Events, Workshops & School Outreach */}
       <section className="section section-alt">
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 3.5rem" }}>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.35rem 0.85rem",
-                borderRadius: "var(--radius-full)",
-                fontSize: "0.775rem",
-                fontWeight: 700,
-                backgroundColor: "var(--stem-bg-subtle)",
-                color: "var(--stem-primary)",
-                border: "1px solid var(--stem-border)",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                marginBottom: "0.75rem",
-              }}
-            >
-              <GraduationCap size={14} /> Practical Training & Outreach
-            </span>
-            <h2 style={{ fontSize: "2.25rem", color: "var(--color-navy-900)" }}>
-              Events, Workshops & School Outreach
-            </h2>
-            <p style={{ color: "var(--color-slate-600)", marginTop: "0.5rem", fontSize: "1.05rem" }}>
-              Hands-on Arduino computing, multi-edition robotics learning, and practical STEM training programs delivered to school and collegiate students.
-            </p>
+          <div className="section-head">
+            <div className="section-head-text">
+              <span className="badge">Events</span>
+              <h2>Workshops and outreach at SRMIST</h2>
+              <p>Arduino workshops, multi-edition robotics programmes and STEM training for school and college students.</p>
+            </div>
+            <Link href="/events" className="section-head-link">
+              All events <ArrowRight size={16} />
+            </Link>
           </div>
 
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "2rem",
-              marginBottom: "3rem",
+              gap: "1.5rem",
             }}
           >
             {featuredEvents.map((event) => (
@@ -314,11 +268,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ textAlign: "center" }}>
-            <Link href="/events" className="btn btn-primary-navy btn-lg">
-              View All 5 Activities & Outreach Programs <ArrowRight size={16} />
-            </Link>
-          </div>
+
         </div>
       </section>
 
@@ -329,18 +279,18 @@ export default function Home() {
       <section className="section section-dark">
         <div className="container" style={{ textAlign: "center", maxWidth: "800px" }}>
           <h2 style={{ fontSize: "2.5rem", color: "var(--color-white)", marginBottom: "1rem" }}>
-            Ready to Collaborate with Alistron?
+            Work with Alistron
           </h2>
           <p style={{ fontSize: "1.1rem", color: "var(--color-slate-300)", marginBottom: "2.25rem", lineHeight: 1.6 }}>
-            Whether you are a school principal planning a STEM lab setup or a research collaborator interested in biosignal exploration, we welcome your enquiry.
+            Planning a STEM lab for your school, or interested in collaborating on assistive technology? Tell us what you have in mind.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact?type=school" className="btn btn-stem btn-lg">
-              School STEM Enquiry
+            <Link href="/contact?type=school" className="btn btn-brand btn-lg">
+              School STEM enquiry
             </Link>
-            <Link href="/contact?type=neurotech" className="btn btn-neuro btn-lg">
-              NeuroTech Collaboration
+            <Link href="/contact?type=neurotech" className="btn btn-ghost-light btn-lg">
+              Bionics collaboration
             </Link>
           </div>
         </div>

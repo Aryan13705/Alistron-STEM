@@ -1,0 +1,92 @@
+# Apache config for the Alistron site on HelioHost (Plesk).
+#
+# The site is a static Next.js export (trailingSlash: true, so every page is
+# <route>/index.html). The only dynamic part is the contact form, handled by
+# api/contact.php. Every block is wrapped in <IfModule> so a missing module
+# degrades gracefully instead of returning a 500.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+DirectorySlash On
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+
+# Never serve .htaccess / .htpasswd (Plesk's default config also blocks these).
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.ht">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+  AddType application/xml .xml
+  # Next's client router fetches these RSC payloads; static export accepts text/plain.
+  AddType "text/plain; charset=utf-8" .txt
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS. Issue the Let's Encrypt certificate in Plesk first
+  # (SSL/TLS Certificates), then uncomment these three lines.
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Canonical host: www.alistron.in -> alistron.in
+  RewriteCond %{HTTP_HOST} ^www\.(alistron\.in)$ [NC]
+  RewriteRule ^ %{REQUEST_SCHEME}://%1%{REQUEST_URI} [R=301,L]
+
+  # Contact form: the client POSTs to /api/contact.
+  RewriteRule ^api/contact/?$ api/contact.php [L]
+
+  # Nothing else lives under /api/.
+  RewriteCond %{REQUEST_URI} !^/api/contact\.php$
+  RewriteRule ^api/ - [R=404,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  # Only sent over HTTPS (browsers ignore it on HTTP anyway).
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+</IfModule>
+
+# Caching: hashed build assets are immutable; images/icons cache for 30 days;
+# HTML and RSC payloads always revalidate so new deploys show up immediately.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|txt|xml|json)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpe?g|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store"
+  </FilesMatch>
+</IfModule>
+
+# Fallback for servers without mod_headers.
+<IfModule !mod_headers.c>
+  <IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 0 seconds"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/x-icon "access plus 30 days"
+  </IfModule>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/manifest+json image/svg+xml
+</IfModule>

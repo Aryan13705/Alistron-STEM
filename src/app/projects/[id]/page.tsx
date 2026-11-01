@@ -1,22 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
-import { PROJECTS_DATA, Project } from "@/data/projects";
+import { PROJECTS_DATA } from "@/data/projects";
 import {
   ArrowLeft,
   Cpu,
   GraduationCap,
   Radio,
   AlertCircle,
-  CheckCircle2,
+  Check,
   GitBranch,
   ExternalLink,
   Layers,
   Wrench,
   Activity,
   FileCode,
-  Share2,
 } from "lucide-react";
 
 interface ProjectPageProps {
@@ -60,7 +60,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       {/* Top Header / Hero */}
       <section
         style={{
-          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
+          background: "var(--color-slate-50)",
           paddingTop: "4rem",
           paddingBottom: "3.5rem",
           borderBottom: "1px solid var(--color-slate-200)",
@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", flexWrap: "wrap" }}>
               <span className={"badge " + (isNeuro ? "badge-neuro" : isIoT ? "badge-parent" : "badge-stem")}>
                 {isNeuro ? <Cpu size={14} /> : isIoT ? <Radio size={14} /> : <GraduationCap size={14} />}
-                {isNeuro ? "Alistron NeuroTech" : isIoT ? "Wireless & IoT Division" : "Alistron STEM"}
+                {isNeuro ? "Alistron Bionics" : isIoT ? "Wireless & IoT Division" : "Alistron STEM"}
               </span>
 
               <span
@@ -90,16 +90,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   borderRadius: "var(--radius-full)",
                   backgroundColor:
                     project.status === "Concept"
-                      ? "#F1F5F9"
+                      ? "var(--color-slate-100)"
                       : project.status === "Prototype" || project.status === "In Progress"
-                      ? "#E0F2FE"
-                      : "#CCFBF1",
+                      ? "var(--color-slate-100)"
+                      : "var(--color-slate-100)",
                   color:
                     project.status === "Concept"
-                      ? "#475569"
+                      ? "var(--color-slate-600)"
                       : project.status === "Prototype" || project.status === "In Progress"
-                      ? "#0284C7"
-                      : "#0D9488",
+                      ? "var(--color-slate-700)"
+                      : "var(--color-slate-700)",
                   border: "1px solid rgba(0,0,0,0.05)",
                 }}
               >
@@ -140,20 +140,20 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 <div
                   style={{
                     padding: "1.25rem",
-                    backgroundColor: "#FFFBEB",
+                    backgroundColor: "var(--color-slate-50)",
                     borderRadius: "var(--radius-md)",
-                    border: "1px solid #FCD34D",
+                    border: "1px solid var(--color-slate-200)",
                     display: "flex",
                     gap: "0.875rem",
                     alignItems: "flex-start",
                   }}
                 >
-                  <AlertCircle size={24} color="#D97706" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
+                  <AlertCircle size={24} color="var(--color-slate-500)" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
                   <div>
-                    <h4 style={{ color: "#92400E", fontSize: "1rem", marginBottom: "0.25rem" }}>
+                    <h4 style={{ color: "var(--color-slate-700)", fontSize: "1rem", marginBottom: "0.25rem" }}>
                       Important Technical Disclaimer
                     </h4>
-                    <p style={{ color: "#78350F", fontSize: "0.875rem", margin: 0, lineHeight: 1.5 }}>
+                    <p style={{ color: "var(--color-slate-600)", fontSize: "0.875rem", margin: 0, lineHeight: 1.5 }}>
                       {project.disclaimer}
                     </p>
                   </div>
@@ -165,10 +165,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 <div
                   className="card"
                   style={{
-                    padding: "0.75rem",
-                    backgroundColor: "var(--color-slate-900)",
+                    padding: 0,
+                    overflow: "hidden",
                     borderRadius: "var(--radius-lg)",
-                    boxShadow: "var(--shadow-lg)",
                   }}
                 >
                   <div
@@ -176,12 +175,10 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       position: "relative",
                       width: "100%",
                       height: "400px",
-                      borderRadius: "var(--radius-md)",
-                      overflow: "hidden",
                     }}
                   >
                     <Image
-                      src={project.image}
+                      src={withBasePath(project.image)}
                       alt={project.title}
                       fill
                       style={{ objectFit: "cover" }}
@@ -189,48 +186,27 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       sizes="(max-width: 1200px) 100vw, 800px"
                     />
                   </div>
-                  <p style={{ color: "var(--color-slate-400)", fontSize: "0.8rem", textAlign: "center", marginTop: "0.75rem", marginBottom: "0.25rem" }}>
-                    📷 Technical Prototype & Architecture Demonstration Diagram
-                  </p>
                 </div>
-              ) : (
-                <div
-                  style={{
-                    padding: "2rem",
-                    backgroundColor: "var(--color-slate-100)",
-                    borderRadius: "var(--radius-md)",
-                    textAlign: "center",
-                    border: "1px dashed var(--color-slate-300)",
-                  }}
-                >
-                  <p style={{ color: "var(--color-slate-500)", fontSize: "0.9rem" }}>
-                    Circuit Diagram & Hardware Images: Details to be added
+              ) : null}
+
+              {/* Problem Statement */}
+              {project.problemStatement && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <AlertCircle size={20} color="var(--color-navy-900)" /> Problem Statement
+                  </h3>
+                  <p style={{ fontSize: "1rem", color: "var(--color-slate-700)", lineHeight: 1.6 }}>
+                    {project.problemStatement}
                   </p>
                 </div>
               )}
 
-              {/* Problem Statement */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <AlertCircle size={20} color="var(--color-navy-900)" /> Problem Statement
-                </h3>
-                {project.problemStatement ? (
-                  <p style={{ fontSize: "1rem", color: "var(--color-slate-700)", lineHeight: 1.6 }}>
-                    {project.problemStatement}
-                  </p>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)", fontStyle: "italic" }}>
-                    Details to be added
-                  </p>
-                )}
-              </div>
-
               {/* Objectives */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <CheckCircle2 size={20} color="var(--stem-primary)" /> Project Objectives
-                </h3>
-                {project.objectives && project.objectives.length > 0 ? (
+              {project.objectives && project.objectives.length > 0 && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Check size={20} color="var(--stem-primary)" /> Project Objectives
+                  </h3>
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                     {project.objectives.map((obj, idx) => (
                       <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem", fontSize: "0.95rem", color: "var(--color-slate-700)" }}>
@@ -239,17 +215,15 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       </div>
                     ))}
                   </div>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Hardware and Sensors */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Wrench size={20} color="var(--neuro-primary)" /> Hardware & Sensors
-                </h3>
-                {project.hardwareAndSensors && project.hardwareAndSensors.length > 0 ? (
+              {project.hardwareAndSensors && project.hardwareAndSensors.length > 0 && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Wrench size={20} color="var(--neuro-primary)" /> Hardware & Sensors
+                  </h3>
                   <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     {project.hardwareAndSensors.map((hw, idx) => (
                       <li key={idx} style={{ fontSize: "0.95rem", color: "var(--color-slate-700)" }}>
@@ -257,31 +231,27 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Communication Architecture */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Radio size={20} color="var(--color-navy-900)" /> Communication Architecture
-                </h3>
-                {project.communicationArchitecture ? (
+              {project.communicationArchitecture && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Radio size={20} color="var(--color-navy-900)" /> Communication Architecture
+                  </h3>
                   <p style={{ fontSize: "1rem", color: "var(--color-slate-700)", lineHeight: 1.6 }}>
                     {project.communicationArchitecture}
                   </p>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Software & Data Processing */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <FileCode size={20} color="var(--neuro-primary)" /> Software & Data Processing
-                </h3>
-                {project.softwareAndDataProcessing && project.softwareAndDataProcessing.length > 0 ? (
+              {project.softwareAndDataProcessing && project.softwareAndDataProcessing.length > 0 && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <FileCode size={20} color="var(--neuro-primary)" /> Software & Data Processing
+                  </h3>
                   <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     {project.softwareAndDataProcessing.map((sw, idx) => (
                       <li key={idx} style={{ fontSize: "0.95rem", color: "var(--color-slate-700)" }}>
@@ -289,17 +259,15 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Implementation Workflow */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Layers size={20} color="var(--stem-primary)" /> Implementation Workflow
-                </h3>
-                {project.implementationWorkflow && project.implementationWorkflow.length > 0 ? (
+              {project.implementationWorkflow && project.implementationWorkflow.length > 0 && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Layers size={20} color="var(--stem-primary)" /> Implementation Workflow
+                  </h3>
                   <ol style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     {project.implementationWorkflow.map((step, idx) => (
                       <li key={idx} style={{ fontSize: "0.95rem", color: "var(--color-slate-700)" }}>
@@ -307,34 +275,30 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       </li>
                     ))}
                   </ol>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Testing & Results */}
-              <div>
-                <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Activity size={20} color="var(--neuro-primary)" /> Testing & Verification Results
-                </h3>
-                {project.testingAndResults ? (
+              {project.testingAndResults && (
+                <div>
+                  <h3 style={{ fontSize: "1.4rem", color: "var(--color-navy-900)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Activity size={20} color="var(--neuro-primary)" /> Testing & results
+                  </h3>
                   <p style={{ fontSize: "1rem", color: "var(--color-slate-700)", lineHeight: 1.6 }}>
                     {project.testingAndResults}
                   </p>
-                ) : (
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-slate-500)" }}>Details to be added</p>
-                )}
-              </div>
+                </div>
+              )}
             </div>
 
             {/* Right Sidebar */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
               {/* Sidebar Card: Technical Stack */}
-              <div className="card" style={{ padding: "1.75rem", borderTop: "4px solid var(--color-navy-900)" }}>
+              <div className="card" style={{ padding: "1.75rem" }}>
                 <h4 style={{ fontSize: "1.15rem", marginBottom: "1rem", color: "var(--color-navy-900)" }}>
-                  Verified Tech Stack
+                  Tech stack
                 </h4>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: project.githubUrl || project.demoUrl ? "1.5rem" : 0 }}>
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
@@ -352,54 +316,49 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   ))}
                 </div>
 
-                <h4 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", color: "var(--color-navy-900)" }}>
-                  Repository & Live Links
-                </h4>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  {project.githubUrl ? (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline"
-                      style={{ width: "100%", justifyContent: "center" }}
-                    >
-                      <GitBranch size={16} /> GitHub Repository
-                    </a>
-                  ) : (
-                    <div style={{ fontSize: "0.85rem", color: "var(--color-slate-500)" }}>
-                      GitHub Repository: Details to be added
+{(project.githubUrl || project.demoUrl) && (
+                  <>
+                    <h4 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", color: "var(--color-navy-900)" }}>
+                      Links
+                    </h4>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline"
+                          style={{ width: "100%", justifyContent: "center" }}
+                        >
+                          <GitBranch size={16} /> GitHub repository
+                        </a>
+                      )}
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary-navy"
+                          style={{ width: "100%", justifyContent: "center" }}
+                        >
+                          <ExternalLink size={16} /> Live demo
+                        </a>
+                      )}
                     </div>
-                  )}
-
-                  {project.demoUrl ? (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary-navy"
-                      style={{ width: "100%", justifyContent: "center" }}
-                    >
-                      <ExternalLink size={16} /> Live Prototype Demo
-                    </a>
-                  ) : (
-                    <div style={{ fontSize: "0.85rem", color: "var(--color-slate-500)" }}>
-                      Live Demo: Details to be added
-                    </div>
-                  )}
-                </div>
+                  </>
+                )}
               </div>
 
               {/* Sidebar Card: Division & Consultation */}
               <div className="card" style={{ padding: "1.75rem", backgroundColor: "var(--color-slate-900)", color: "#fff" }}>
                 <h4 style={{ color: "#fff", fontSize: "1.15rem", marginBottom: "0.5rem" }}>
-                  Interested in this Project?
+                  Interested in this project?
                 </h4>
                 <p style={{ color: "var(--color-slate-300)", fontSize: "0.875rem", lineHeight: 1.5, marginBottom: "1.25rem" }}>
                   Connect with the Alistron engineering team to discuss technical specifications, school workshops, or joint R&D collaboration.
                 </p>
                 <Link href="/contact" className="btn btn-stem" style={{ width: "100%", justifyContent: "center" }}>
-                  Contact Engineering Desk
+                  Talk to our engineers
                 </Link>
               </div>
             </div>

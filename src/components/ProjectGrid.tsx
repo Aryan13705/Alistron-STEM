@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PROJECTS_DATA, Project } from "@/data/projects";
-import { Cpu, GraduationCap, Radio, ArrowRight, AlertCircle, Sparkles } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
+import { PROJECTS_DATA } from "@/data/projects";
+import { Cpu, GraduationCap, Radio, ArrowRight, AlertCircle } from "lucide-react";
 
 export type FilterCategory =
   | "all"
@@ -120,7 +121,7 @@ export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterC
                     }}
                   >
                     <Image
-                      src={project.image}
+                      src={withBasePath(project.image)}
                       alt={project.title}
                       fill
                       style={{ objectFit: "cover" }}
@@ -155,7 +156,7 @@ export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterC
                     ) : (
                       <GraduationCap size={12} />
                     )}
-                    {isNeuro ? "NeuroTech" : isIoT ? "Wireless & IoT" : "STEM"}
+                    {isNeuro ? "Bionics" : isIoT ? "Wireless & IoT" : "STEM"}
                   </span>
 
                   <span
@@ -166,16 +167,16 @@ export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterC
                       borderRadius: "var(--radius-full)",
                       backgroundColor:
                         project.status === "Concept"
-                          ? "#F1F5F9"
+                          ? "var(--color-slate-100)"
                           : project.status === "Prototype" || project.status === "In Progress"
-                          ? "#E0F2FE"
-                          : "#CCFBF1",
+                          ? "var(--color-slate-100)"
+                          : "var(--color-slate-100)",
                       color:
                         project.status === "Concept"
-                          ? "#475569"
+                          ? "var(--color-slate-600)"
                           : project.status === "Prototype" || project.status === "In Progress"
-                          ? "#0284C7"
-                          : "#0D9488",
+                          ? "var(--color-slate-700)"
+                          : "var(--color-slate-700)",
                       border: "1px solid rgba(0,0,0,0.05)",
                     }}
                   >
@@ -254,16 +255,16 @@ export default function ProjectGrid({ defaultFilter }: { defaultFilter?: FilterC
                     style={{
                       marginBottom: "1.25rem",
                       padding: "0.5rem 0.75rem",
-                      backgroundColor: "#FFFBEB",
+                      backgroundColor: "var(--color-slate-50)",
                       borderRadius: "var(--radius-sm)",
-                      border: "1px solid #FDE68A",
+                      border: "1px solid var(--color-slate-200)",
                       display: "flex",
                       gap: "0.4rem",
                       alignItems: "flex-start",
                     }}
                   >
-                    <AlertCircle size={14} color="#D97706" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
-                    <span style={{ fontSize: "0.725rem", color: "#92400E" }}>{project.disclaimer}</span>
+                    <AlertCircle size={14} color="var(--color-slate-500)" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+                    <span style={{ fontSize: "0.725rem", color: "var(--color-slate-700)" }}>{project.disclaimer}</span>
                   </div>
                 )}
 

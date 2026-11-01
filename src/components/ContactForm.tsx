@@ -1,9 +1,12 @@
-"use me";
 "use client";
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Send, CheckCircle2, AlertCircle, Loader2, GraduationCap, Cpu, HelpCircle } from "lucide-react";
+import { Send, Check, AlertCircle, Loader2, GraduationCap, Cpu, HelpCircle } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
+
+// Static hosts without a backend (GitHub Pages) post to the HelioHost endpoint instead.
+const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || withBasePath("/api/contact");
 
 export default function ContactForm({ initialType }: { initialType?: "school" | "neurotech" | "general" }) {
   const searchParams = useSearchParams();
@@ -24,7 +27,6 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [responseDetails, setResponseDetails] = useState<{ simulated?: boolean; message?: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +47,7 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -59,14 +61,13 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
         }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to transmit enquiry. Please check form inputs.");
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "We couldn't send your enquiry right now. Please email us at contact@alistron.in and we'll get back to you.");
       }
 
       setStatus("success");
-      setResponseDetails(data);
       setFormData({
         name: "",
         email: "",
@@ -77,7 +78,11 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
       });
     } catch (err: unknown) {
       setStatus("error");
-      setErrorMessage((err instanceof Error ? err.message : String(err)) || "An unexpected network error occurred.");
+      setErrorMessage(
+        err instanceof TypeError
+          ? "Network error. Please check your connection, or email us at contact@alistron.in."
+          : (err instanceof Error && err.message) || "Something went wrong. Please email us at contact@alistron.in."
+      );
     }
   };
 
@@ -156,7 +161,7 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
             transition: "all 0.2s ease",
           }}
         >
-          <Cpu size={18} /> NeuroTech Collaboration
+          <Cpu size={18} /> Bionics Collaboration
         </button>
 
         <button
@@ -196,19 +201,14 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
             alignItems: "flex-start",
           }}
         >
-          <CheckCircle2 size={22} color="#16A34A" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+          <Check size={22} color="#16A34A" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
           <div>
             <h4 style={{ color: "#15803D", fontSize: "1.05rem", marginBottom: "0.25rem" }}>
-              Enquiry Transmitted Successfully!
+              Thank you, your enquiry has been sent.
             </h4>
             <p style={{ color: "#166534", fontSize: "0.875rem", margin: 0 }}>
               Thank you for reaching out to Alistron. Our team has received your enquiry and will respond to your provided email address shortly.
             </p>
-            {responseDetails?.simulated && (
-              <p style={{ color: "#15803D", fontSize: "0.775rem", marginTop: "0.5rem", fontStyle: "italic" }}>
-                Notice: Server operating in verified mock logging mode (Resend optional variables ready).
-              </p>
-            )}
           </div>
         </div>
       )}
@@ -228,7 +228,7 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
           }}
         >
           <AlertCircle size={20} color="#DC2626" style={{ flexShrink: 0 }} />
-          <p style={{ color: "#991B1B", fontSize: "0.875rem", margin: 0 }}>{errorMessage}</p>
+          <p role="alert" style={{ color: "#991B1B", fontSize: "0.875rem", margin: 0 }}>{errorMessage}</p>
         </div>
       )}
 
@@ -390,7 +390,7 @@ export default function ContactForm({ initialType }: { initialType?: "school" | 
             </>
           ) : (
             <>
-              <Send size={18} /> Send {enquiryType === "school" ? "STEM Lab" : enquiryType === "neurotech" ? "NeuroTech" : "General"} Enquiry
+              <Send size={18} /> Send {enquiryType === "school" ? "STEM Lab" : enquiryType === "neurotech" ? "Bionics" : "General"} Enquiry
             </>
           )}
         </button>

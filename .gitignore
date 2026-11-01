@@ -20,6 +20,17 @@
 # production
 /build
 
+# deploy artifacts
+/cloudflare-pages-deploy.zip
+/heliohost-deploy.zip
+/github-pages-deploy/
+
+# HelioHost contact form secrets (lives above the web root on the server)
+alistron-config.php
+
+# wrangler local state
+/.wrangler/
+
 # misc
 .DS_Store
 *.pem

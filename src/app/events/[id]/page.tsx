@@ -1,21 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
-import { ALISTRON_EVENTS, AlistronEvent } from "@/data/events";
+import { ALISTRON_EVENTS } from "@/data/events";
 import {
   ArrowLeft,
   Calendar,
   MapPin,
-  CheckCircle2,
+  Check,
   GraduationCap,
   Cpu,
-  Sparkles,
-  Info,
-  ShieldCheck,
-  CameraOff,
   Users,
-  Layers,
   ArrowRight,
 } from "lucide-react";
 
@@ -44,6 +40,7 @@ export async function generateMetadata({ params }: EventDetailPageProps) {
   return {
     title: `${event.name} | Events & Outreach | ALISTRON`,
     description: event.shortDescription,
+    alternates: { canonical: `/events/${event.slug}/` },
   };
 }
 
@@ -62,7 +59,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
       {/* Top Breadcrumb & Hero */}
       <section
         style={{
-          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
+          background: "var(--color-slate-50)",
           paddingTop: "4.5rem",
           paddingBottom: "3.5rem",
           borderBottom: "1px solid var(--color-slate-200)",
@@ -98,9 +95,9 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
-                  backgroundColor: "rgba(13, 148, 136, 0.08)",
-                  color: "#0D9488",
-                  border: "1px solid rgba(13, 148, 136, 0.25)",
+                  backgroundColor: "var(--color-slate-100)",
+                  color: "var(--color-slate-700)",
+                  border: "1px solid var(--color-slate-200)",
                 }}
               >
                 {event.category === "School Outreach" ? <GraduationCap size={14} /> : <Cpu size={14} />}
@@ -125,7 +122,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
             <h1
               style={{
                 fontSize: "clamp(2.25rem, 4vw + 1rem, 3.25rem)",
-                fontWeight: 800,
+                fontWeight: 650,
                 color: "var(--color-navy-900)",
                 lineHeight: 1.15,
                 letterSpacing: "-0.025em",
@@ -184,7 +181,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               <h2
                 style={{
                   fontSize: "1.4rem",
-                  fontWeight: 800,
+                  fontWeight: 650,
                   color: "var(--color-navy-900)",
                   marginBottom: "1rem",
                 }}
@@ -209,29 +206,31 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                   gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
                   gap: "1.25rem",
                   padding: "1.25rem",
-                  backgroundColor: "#F8FAFC",
+                  backgroundColor: "var(--color-slate-50)",
                   borderRadius: "var(--radius-lg)",
                   border: "1px solid var(--color-slate-200)",
                   marginBottom: "1.75rem",
                 }}
               >
-                <div style={{ display: "flex", gap: "0.75rem" }}>
-                  <Calendar size={20} color="var(--color-navy-900)" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
-                  <div>
-                    <strong style={{ fontSize: "0.85rem", color: "var(--color-slate-900)", display: "block" }}>
-                      Session Schedule
-                    </strong>
-                    <span style={{ fontSize: "0.9rem", color: "var(--color-slate-600)" }}>
-                      {event.date}
-                    </span>
+                {event.date && (
+                  <div style={{ display: "flex", gap: "0.75rem" }}>
+                    <Calendar size={20} color="var(--color-navy-900)" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
+                    <div>
+                      <strong style={{ fontSize: "0.85rem", color: "var(--color-slate-900)", display: "block" }}>
+                        Session Schedule
+                      </strong>
+                      <span style={{ fontSize: "0.9rem", color: "var(--color-slate-600)" }}>
+                        {event.date}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div style={{ display: "flex", gap: "0.75rem" }}>
                   <MapPin size={20} color="var(--stem-primary)" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
                   <div>
                     <strong style={{ fontSize: "0.85rem", color: "var(--color-slate-900)", display: "block" }}>
-                      Hosting Venue / Institution
+                      Venue
                     </strong>
                     <span style={{ fontSize: "0.9rem", color: "var(--color-slate-600)" }}>
                       {event.venue}
@@ -252,57 +251,27 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 </div>
               </div>
 
-              {/* Photographic Documentation */}
-              {event.hasOriginalPhoto && event.image ? (
+              {/* Event Photograph */}
+              {event.hasOriginalPhoto && event.image && (
                 <div
                   style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "360px",
                     borderRadius: "var(--radius-lg)",
                     overflow: "hidden",
                     border: "1px solid var(--color-slate-200)",
+                    backgroundColor: "var(--color-slate-900)",
                     marginBottom: "1.25rem",
                   }}
                 >
-                  <div style={{ position: "relative", width: "100%", height: "360px", backgroundColor: "var(--color-slate-900)" }}>
-                    <Image
-                      src={event.image}
-                      alt={event.name}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 880px) 100vw, 880px"
-                    />
-                  </div>
-                  <div
-                    style={{
-                      padding: "0.75rem 1rem",
-                      backgroundColor: "var(--color-slate-50)",
-                      fontSize: "0.85rem",
-                      color: "var(--color-slate-700)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <Sparkles size={16} color="var(--stem-primary)" />
-                    <span><strong>Original Archival Photograph: </strong>Auditorium session with participating students.</span>
-                  </div>
-                </div>
-              ) : (
-                <div
-                  style={{
-                    padding: "1rem 1.25rem",
-                    borderRadius: "var(--radius-md)",
-                    backgroundColor: "var(--color-slate-50)",
-                    border: "1px solid var(--color-slate-200)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.75rem",
-                  }}
-                >
-                  <CameraOff size={18} color="var(--color-slate-400)" style={{ flexShrink: 0 }} />
-                  <span style={{ fontSize: "0.85rem", color: "var(--color-slate-600)" }}>
-                    <strong>Event Photography: </strong>
-                    Original high-resolution session photographs will be added as institutional archival records are finalized and verified for publication.
-                  </span>
+                  <Image
+                    src={withBasePath(event.image)}
+                    alt={event.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 880px) 100vw, 880px"
+                  />
                 </div>
               )}
             </div>
@@ -320,7 +289,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               <h2
                 style={{
                   fontSize: "1.4rem",
-                  fontWeight: 800,
+                  fontWeight: 650,
                   color: "var(--color-navy-900)",
                   marginBottom: "1rem",
                 }}
@@ -345,7 +314,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                       border: "1px solid var(--color-slate-200)",
                     }}
                   >
-                    <CheckCircle2
+                    <Check
                       size={18}
                       color="var(--stem-primary)"
                       style={{ flexShrink: 0, marginTop: "0.15rem" }}
@@ -355,29 +324,6 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                     </span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Verification and Responsible Record Notice */}
-            <div
-              style={{
-                padding: "1.25rem 1.5rem",
-                borderRadius: "var(--radius-lg)",
-                backgroundColor: "#FFFBEB",
-                border: "1px solid #FDE68A",
-                display: "flex",
-                gap: "0.85rem",
-                alignItems: "flex-start",
-              }}
-            >
-              <Info size={20} color="#D97706" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
-              <div>
-                <strong style={{ fontSize: "0.875rem", color: "#92400E", display: "block", marginBottom: "0.25rem" }}>
-                  Record Verification Notice
-                </strong>
-                <p style={{ fontSize: "0.85rem", color: "#92400E", lineHeight: 1.5, margin: 0 }}>
-                  {event.verificationNotice}
-                </p>
               </div>
             </div>
 
@@ -397,7 +343,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
             >
               <div>
                 <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--color-white)", marginBottom: "0.25rem" }}>
-                  Interested in this Workshop format?
+                  Interested in this workshop format?
                 </h3>
                 <p style={{ fontSize: "0.9rem", color: "var(--color-slate-300)", margin: 0 }}>
                   Contact our STEM team to plan an event or inquire about syllabus customization.
@@ -405,7 +351,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               </div>
 
               <Link href="/contact?type=school" className="btn btn-stem">
-                Contact Outreach Desk <ArrowRight size={16} />
+                Talk to Our STEM Team <ArrowRight size={16} />
               </Link>
             </div>
           </div>

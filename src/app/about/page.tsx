@@ -5,7 +5,7 @@ import TeamSection from "@/components/TeamSection";
 
 export const metadata = {
   title: "About ALISTRON | Mission, Vision & Parent Brand Structure",
-  description: "Learn about Alistron mission to bridge frontier NeuroTech research with accessible school STEM education infrastructure.",
+  description: "Learn about Alistron mission to bridge frontier Bionics research with accessible school STEM education infrastructure.",
 };
 
 export default function AboutPage() {
@@ -13,7 +13,7 @@ export default function AboutPage() {
     <>
       <section
         style={{
-          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
+          background: "var(--color-slate-50)",
           paddingTop: "5rem",
           paddingBottom: "4.5rem",
           borderBottom: "1px solid var(--color-slate-200)",
@@ -92,13 +92,13 @@ export default function AboutPage() {
             <div className="card card-neuro">
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
                 <Cpu size={24} color="var(--neuro-primary)" />
-                <h3 style={{ fontSize: "1.35rem", color: "var(--color-navy-900)" }}>Alistron NeuroTech</h3>
+                <h3 style={{ fontSize: "1.35rem", color: "var(--color-navy-900)" }}>Alistron Bionics</h3>
               </div>
               <p style={{ fontSize: "0.925rem", color: "var(--color-slate-600)", lineHeight: 1.6, marginBottom: "1.25rem" }}>
                 Focuses on exploratory brain-computer interfaces, electromyography (EMG) intent classification, signal conditioning algorithms, and haptic feedback. All R&D is conducted as non-clinical engineering exploration.
               </p>
               <Link href="/neurotech" className="btn btn-neuro btn-sm" style={{ width: "fit-content" }}>
-                Learn More About NeuroTech
+                Learn More About Bionics
               </Link>
             </div>
 
@@ -130,7 +130,7 @@ export default function AboutPage() {
             We welcome conversations with schools, academic researchers, and engineering collaborators.
           </p>
           <Link href="/contact" className="btn btn-primary-navy btn-lg" style={{ backgroundColor: "var(--color-white)", color: "var(--color-navy-900)" }}>
-            Contact Unified Desk <ArrowRight size={18} />
+            Contact Us <ArrowRight size={18} />
           </Link>
         </div>
       </section>

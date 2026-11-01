@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Calendar, GraduationCap, ShieldCheck, ArrowRight, HelpCircle, Info } from "lucide-react";
+import { GraduationCap, ArrowRight } from "lucide-react";
 import EventGrid from "@/components/EventGrid";
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default function EventsPage() {
       {/* Hero Section */}
       <section
         style={{
-          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
+          background: "var(--color-slate-50)",
           paddingTop: "5rem",
           paddingBottom: "4rem",
           borderBottom: "1px solid var(--color-slate-200)",
@@ -46,7 +46,7 @@ export default function EventsPage() {
             <h1
               style={{
                 fontSize: "clamp(2.25rem, 4vw + 1rem, 3.5rem)",
-                fontWeight: 800,
+                fontWeight: 650,
                 color: "var(--color-navy-900)",
                 lineHeight: 1.15,
                 letterSpacing: "-0.03em",
@@ -61,33 +61,10 @@ export default function EventsPage() {
                 fontSize: "1.15rem",
                 color: "var(--color-slate-700)",
                 lineHeight: 1.6,
-                marginBottom: "1.75rem",
               }}
             >
-              Discover Alistron's hands-on Arduino workshops, iterative robotics learning editions, and practical STEM training initiatives delivered to school and collegiate learners.
+              Discover Alistron&apos;s hands-on Arduino workshops, iterative robotics learning editions, and practical STEM training initiatives, all hosted at SRM Institute of Science and Technology (SRMIST).
             </p>
-
-            {/* Factual Disclaimer Banner */}
-            <div
-              style={{
-                backgroundColor: "rgba(241, 245, 249, 0.85)",
-                border: "1px solid var(--color-slate-300)",
-                borderRadius: "var(--radius-md)",
-                padding: "0.875rem 1.25rem",
-                textAlign: "left",
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "0.75rem",
-                fontSize: "0.85rem",
-                color: "var(--color-slate-600)",
-                lineHeight: 1.5,
-              }}
-            >
-              <Info size={18} color="var(--color-navy-900)" style={{ flexShrink: 0, marginTop: "0.15rem" }} />
-              <div>
-                <strong>Archival & Record Notice:</strong> All activities are documented based on factual session records. Specific venue names, session dates, and syllabus modules (including Kendriya Vidyalaya school branch details) are recorded conservatively and subject to ongoing archival verification. Alistron does not claim official institutional endorsement.
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -132,7 +109,7 @@ export default function EventsPage() {
             <h3
               style={{
                 fontSize: "1.75rem",
-                fontWeight: 800,
+                fontWeight: 650,
                 color: "var(--color-navy-900)",
                 marginBottom: "0.75rem",
               }}
